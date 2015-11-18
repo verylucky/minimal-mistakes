@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: https://ruby.taobao.org/
   specs:
     blankslate (2.1.2.4)
     classifier-reborn (2.0.4)
@@ -84,3 +84,6 @@ DEPENDENCIES
   jekyll (= 2.5.3)
   jekyll-sitemap
   octopress (~> 3.0)
+
+BUNDLED WITH
+   1.10.6
