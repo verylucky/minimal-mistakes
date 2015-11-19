@@ -1,13 +1,13 @@
 # Site navigation links
 
 - title: 文章归档
-  url: posts/
+  url: /posts/
 
 - title: Theme Setup
-  url: theme-setup/
+  url: /theme-setup/
 
 - title: 关于我
-  url: about/
+  url: /about/
 
 - title: contact
-  url: contact/
+  url: /contact/
