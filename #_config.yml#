@@ -1,6 +1,6 @@
 # Site wide configuration
 
-title:            å‡Œéªçš„æŠ€æœ¯åšå®¢
+title:            ‘Áè‘¿¥‘µÄ‘¼¼‘Êõ‘²©‘¿Í
 locale:           zh_CN
 url:
 
@@ -26,8 +26,8 @@ kramdown:
 
 # Site owner
 owner:
-  name: å‡Œéª
-  avatar: photo.jpg
+  name: ‘Áè‘¿¥
+  avatar: bio-photo.jpg
   bio: "Learning, Communicating, Growing up."
   email: 526093880@qq.com
   disqus-shortname:
