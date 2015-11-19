@@ -40,7 +40,7 @@ owner:
     ad-client:
     ad-slot:
   bing-verify:
-  github: https://github.com/verylucky/
+  github: verylucky
   stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
   linkedin: #username
   xing: #username
@@ -53,7 +53,7 @@ owner:
   dribbble: #username
   youtube: #username
   soundcloud: #username
-  weibo: http://weibo.com/veryluckyjun/
+  weibo: veryluckyjun
   flickr: #username
   codepen: #username
 
