@@ -4,34 +4,13 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://verylucky.github.io//feed.xml" />
 <link rel="alternate" type="text/html" href="http://verylucky.github.io/" />
-<updated>2015-11-19T13:22:47+08:00</updated>
+<updated>2015-11-19T18:38:33+08:00</updated>
 <id>http://verylucky.github.io//</id>
 <author>
   <name>凌骏</name>
   <uri>http://verylucky.github.io//</uri>
   <email>526093880@qq.com</email>
 </author>
-
-
-  
-
-<entry>
-  <title type="html"><![CDATA[First Post]]></title>
-  <link rel="alternate" type="text/html" href="http://verylucky.github.io//first-post/" />
-  <id>http://verylucky.github.io//first-post</id>
-  <published>2015-11-19T13:20:24+08:00</published>
-  <updated>2015-11-19T13:20:24+08:00</updated>
-  <author>
-    <name>凌骏</name>
-    <uri>http://verylucky.github.io/</uri>
-    <email>526093880@qq.com</email>
-  </author>
-  <content type="html">
-    
-
-    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io//first-post/&quot;&gt;First Post&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io/&quot;&gt;凌骏的技术博客&lt;/a&gt; on November 19, 2015.&lt;/p&gt;
-  </content>
-</entry>
 
 
   
@@ -400,6 +379,40 @@ description: &amp;quot;An archive of posts sorted by tag.&amp;quot;
 &lt;/figure&gt;
 
     &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io//sample-post-images/&quot;&gt;A Post with Images&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io/&quot;&gt;凌骏的技术博客&lt;/a&gt; on May 22, 2013.&lt;/p&gt;
+  </content>
+</entry>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[Jekyll 1.0.0 Released]]></title>
+  <link rel="alternate" type="text/html" href="http://verylucky.github.io//release/first-post/" />
+  <id>http://verylucky.github.io//release/first-post</id>
+  <published>2013-05-06T08:12:52+08:00</published>
+  <updated>2013-05-06T08:12:52+08:00</updated>
+  <author>
+    <name></name>
+    <uri>http://verylucky.github.io/</uri>
+    
+  </author>
+  <content type="html">
+    &lt;p&gt;Hey! After many months of hard work by Jekyll’s contributors, we’re excited
+to announce the first major release of the project in a long while. v1.0.0 is
+finally here! While the list of improvements and bug fixes is &lt;a href=&quot;/docs/history/#v1-0-0&quot;&gt;quite lengthy&lt;/a&gt;,
+here are the highlights (thanks to &lt;a href=&quot;http://twitter.com/BenBalter&quot;&gt;@benbalter&lt;/a&gt; for the
+examples and for compiling this list):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Support for the Gist tag for easily embedding Gists (&lt;a href=&quot;https://gist.github.com/benbalter/5555251&quot;&gt;example&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Automatically generated post excerpts (&lt;a href=&quot;https://gist.github.com/benbalter/5555369&quot;&gt;example&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Save and preview drafts before publishing (&lt;a href=&quot;https://gist.github.com/benbalter/5555992&quot;&gt;example&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Take a look at the &lt;a href=&quot;/docs/upgrading/&quot;&gt;Upgrading&lt;/a&gt; page in the docs for more detailed information.&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io//release/first-post/&quot;&gt;Jekyll 1.0.0 Released&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io/&quot;&gt;凌骏的技术博客&lt;/a&gt; on May 06, 2013.&lt;/p&gt;
   </content>
 </entry>
 
