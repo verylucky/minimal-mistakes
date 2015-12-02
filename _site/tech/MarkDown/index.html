@@ -1,0 +1,547 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Markdown语法 &#8211; 凌骏的技术博客</title>
+<meta name="description" content="An email example@example.com link. Simple inline link http://chenluois.com, another inline link Smaller, one more inline link with title Resize. A reference style link. Input id, then anywhere in the doc, define the link with corresponding id: Titles ( or called tool tips ) in the links are optional.">
+<meta name="keywords" content="markdown, java">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Markdown语法">
+<meta name="twitter:description" content="An email example@example.com link. Simple inline link http://chenluois.com, another inline link Smaller, one more inline link with title Resize. A reference style link. Input id, then anywhere in the doc, define the link with corresponding id: Titles ( or called tool tips ) in the links are optional.">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://127.0.0.1:4000/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown语法">
+<meta property="og:description" content="An email example@example.com link. Simple inline link http://chenluois.com, another inline link Smaller, one more inline link with title Resize. A reference style link. Input id, then anywhere in the doc, define the link with corresponding id: Titles ( or called tool tips ) in the links are optional.">
+<meta property="og:url" content="http://127.0.0.1:4000/tech/MarkDown/">
+<meta property="og:site_name" content="凌骏的技术博客">
+
+<meta property="og:image" content="http://127.0.0.1:4000/images/default-thumb.png">
+
+
+
+
+
+
+<link rel="canonical" href="http://127.0.0.1:4000/tech/MarkDown/">
+<link href="http://127.0.0.1:4000/feed.xml" type="application/atom+xml" rel="alternate" title="凌骏的技术博客 Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://127.0.0.1:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://127.0.0.1:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://127.0.0.1:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://127.0.0.1:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://127.0.0.1:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://127.0.0.1:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://127.0.0.1:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://127.0.0.1:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://127.0.0.1:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://127.0.0.1:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+<style type="text/css">
+
+    .ds-powered-by
+    {
+        display:none;
+    }
+    .ds-meta
+    {
+        display:none;
+    }
+    .ds-comments-info
+    {
+        display:none;
+    }
+    .ds-paginator
+    {
+        display:none;
+    }
+    </style>
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://127.0.0.1:4000/">凌骏的技术博客</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				        
+				    
+				    <li><a href="http://127.0.0.1:4000/tech-article/" >技术积累</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://127.0.0.1:4000/life-article/" >心情随笔</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://127.0.0.1:4000/about/" >关于我</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://127.0.0.1:4000/tags/" >Tags</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://127.0.0.1:4000/archive/" >文章归档</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://127.0.0.1:4000/images/photo.jpg" class="bio-photo" alt="凌骏 bio photo">
+
+
+  <h3 itemprop="name">凌骏</h3>
+  <p>Learning, Communicating, Growing up.</p>
+  <a href="mailto:526093880@qq.com" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://github.com/verylucky" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://www.weibo.com/veryluckyjun" class="author-social" target="_blank"><i class="fa fa-fw fa-weibo"></i> Weibo</a>
+  
+  
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://127.0.0.1:4000/tech/MarkDown/" rel="bookmark" title="Markdown语法">Markdown语法</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p><img src="http://25.io/mou/Mou_128.png" alt="Mou icon" /></p>
+
+<h2 id="overview">Overview</h2>
+
+<p><strong>Mou</strong>, the missing Markdown editor for <em>web developers</em>.</p>
+
+<h3 id="syntax">Syntax</h3>
+
+<h4 id="strong-and-emphasize">Strong and Emphasize</h4>
+
+<p><strong>strong</strong> or <strong>strong</strong> ( Cmd + B )</p>
+
+<p><em>emphasize</em> or <em>emphasize</em> ( Cmd + I )</p>
+
+<p><strong>Sometimes I want a lot of text to be bold.
+Like, seriously, a <em>LOT</em> of text</strong></p>
+
+<h4 id="blockquotes">Blockquotes</h4>
+
+<blockquote>
+  <p>Right angle brackets &gt; are used for block quotes.</p>
+</blockquote>
+
+<h4 id="links-and-email">Links and Email</h4>
+
+<p>An email <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#101;&#120;&#097;&#109;&#112;&#108;&#101;&#064;&#101;&#120;&#097;&#109;&#112;&#108;&#101;&#046;&#099;&#111;&#109;">&#101;&#120;&#097;&#109;&#112;&#108;&#101;&#064;&#101;&#120;&#097;&#109;&#112;&#108;&#101;&#046;&#099;&#111;&#109;</a> link.</p>
+
+<p>Simple inline link <a href="http://chenluois.com">http://chenluois.com</a>, another inline link <a href="http://25.io/smaller/">Smaller</a>, one more inline link with title <a href="http://resizesafari.com" title="a Safari extension">Resize</a>.</p>
+
+<p>A <a href="http://25.io/mou/" title="Markdown editor on Mac OS X">reference style</a> link. Input id, then anywhere in the doc, define the link with corresponding id:</p>
+
+<p>Titles ( or called tool tips ) in the links are optional.</p>
+
+<h4 id="images">Images</h4>
+
+<p>An inline image <img src="http://25.io/smaller/favicon.ico" alt="Smaller icon" title="Title here" />, title is optional.</p>
+
+<p>A <img src="http://resizesafari.com/favicon.ico" alt="Resize icon" title="Title" /> reference style image.</p>
+
+<h4 id="inline-code-and-block-code">Inline code and Block code</h4>
+
+<p>Inline code are surround by <code>backtick</code> key. To create a block code:</p>
+
+<pre><code>Indent each line by at least 1 tab, or 4 spaces.
+var Mou = exactlyTheAppIwant;
+</code></pre>
+
+<h4 id="ordered-lists">Ordered Lists</h4>
+
+<p>Ordered lists are created using “1.” + Space:</p>
+
+<ol>
+  <li>Ordered list item</li>
+  <li>Ordered list item</li>
+  <li>Ordered list item</li>
+</ol>
+
+<h4 id="unordered-lists">Unordered Lists</h4>
+
+<p>Unordered list are created using “*” + Space:</p>
+
+<ul>
+  <li>Unordered list item</li>
+  <li>Unordered list item</li>
+  <li>Unordered list item</li>
+</ul>
+
+<p>Or using “-“ + Space:</p>
+
+<ul>
+  <li>Unordered list item</li>
+  <li>Unordered list item</li>
+  <li>Unordered list item</li>
+</ul>
+
+<h4 id="hard-linebreak">Hard Linebreak</h4>
+
+<p>End a line with two or more spaces will create a hard linebreak, called <code>&lt;br /&gt;</code> in HTML. ( Control + Return )<br />
+Above line ended with 2 spaces.</p>
+
+<h4 id="horizontal-rules">Horizontal Rules</h4>
+
+<p>Three or more asterisks or dashes:</p>
+
+<hr />
+
+<hr />
+
+<hr />
+
+<h4 id="headers">Headers</h4>
+
+<p>Setext-style:</p>
+
+<h1 id="this-is-h1">This is H1</h1>
+
+<h2 id="this-is-h2">This is H2</h2>
+
+<p>atx-style:</p>
+
+<h1 id="this-is-h1-1">This is H1</h1>
+<p>## This is H2
+### This is H3
+#### This is H4
+##### This is H5
+###### This is H6</p>
+
+<h3 id="extra-syntax">Extra Syntax</h3>
+
+<h4 id="footnotes">Footnotes</h4>
+
+<p>Footnotes work mostly like reference-style links. A footnote is made of two things: a marker in the text that will become a superscript number; a footnote definition that will be placed in a list of footnotes at the end of the document. A footnote looks like this:</p>
+
+<p>That’s some text with a footnote.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<h4 id="strikethrough">Strikethrough</h4>
+
+<p>Wrap with 2 tilde characters:</p>
+
+<p>~~Strikethrough~~</p>
+
+<h4 id="fenced-code-blocks">Fenced Code Blocks</h4>
+
+<p>Start with a line containing 3 or more backticks, and ends with the first line with the same number of backticks:</p>
+
+<p><code>
+Fenced code blocks are like Stardard Markdown’s regular code
+blocks, except that they’re not indented and instead rely on
+a start and end fence lines to delimit the code block.
+</code></p>
+
+<h4 id="tables">Tables</h4>
+
+<p>A simple table looks like this:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Header</th>
+      <th>Second Header</th>
+      <th>Third Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content Cell</td>
+      <td>Content Cell</td>
+      <td>Content Cell</td>
+    </tr>
+    <tr>
+      <td>Content Cell</td>
+      <td>Content Cell</td>
+      <td>Content Cell</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If you wish, you can add a leading and tailing pipe to each line of the table:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Header</th>
+      <th>Second Header</th>
+      <th>Third Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content Cell</td>
+      <td>Content Cell</td>
+      <td>Content Cell</td>
+    </tr>
+    <tr>
+      <td>Content Cell</td>
+      <td>Content Cell</td>
+      <td>Content Cell</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Specify alignment for each column by adding colons to separator lines:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">First Header</th>
+      <th style="text-align: center">Second Header</th>
+      <th style="text-align: right">Third Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Left</td>
+      <td style="text-align: center">Center</td>
+      <td style="text-align: right">Right</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Left</td>
+      <td style="text-align: center">Center</td>
+      <td style="text-align: right">Right</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="shortcuts">Shortcuts</h3>
+
+<h4 id="view">View</h4>
+
+<ul>
+  <li>Toggle live preview: Shift + Cmd + I</li>
+  <li>Toggle Words Counter: Shift + Cmd + W</li>
+  <li>Toggle Transparent: Shift + Cmd + T</li>
+  <li>Toggle Floating: Shift + Cmd + F</li>
+  <li>Left/Right = 1/1: Cmd + 0</li>
+  <li>Left/Right = 3/1: Cmd + +</li>
+  <li>Left/Right = 1/3: Cmd + -</li>
+  <li>Toggle Writing orientation: Cmd + L</li>
+  <li>Toggle fullscreen: Control + Cmd + F</li>
+</ul>
+
+<h4 id="actions">Actions</h4>
+
+<ul>
+  <li>Copy HTML: Option + Cmd + C</li>
+  <li>Strong: Select text, Cmd + B</li>
+  <li>Emphasize: Select text, Cmd + I</li>
+  <li>Inline Code: Select text, Cmd + K</li>
+  <li>Strikethrough: Select text, Cmd + U</li>
+  <li>Link: Select text, Control + Shift + L</li>
+  <li>Image: Select text, Control + Shift + I</li>
+  <li>Select Word: Control + Option + W</li>
+  <li>Select Line: Shift + Cmd + L</li>
+  <li>Select All: Cmd + A</li>
+  <li>Deselect All: Cmd + D</li>
+  <li>Convert to Uppercase: Select text, Control + U</li>
+  <li>Convert to Lowercase: Select text, Control + Shift + U</li>
+  <li>Convert to Titlecase: Select text, Control + Option + U</li>
+  <li>Convert to List: Select lines, Control + L</li>
+  <li>Convert to Blockquote: Select lines, Control + Q</li>
+  <li>Convert to H1: Cmd + 1</li>
+  <li>Convert to H2: Cmd + 2</li>
+  <li>Convert to H3: Cmd + 3</li>
+  <li>Convert to H4: Cmd + 4</li>
+  <li>Convert to H5: Cmd + 5</li>
+  <li>Convert to H6: Cmd + 6</li>
+  <li>Convert Spaces to Tabs: Control + [</li>
+  <li>Convert Tabs to Spaces: Control + ]</li>
+  <li>Insert Current Date: Control + Shift + 1</li>
+  <li>Insert Current Time: Control + Shift + 2</li>
+  <li>Insert entity &lt;: Control + Shift + ,</li>
+  <li>Insert entity &gt;: Control + Shift + .</li>
+  <li>Insert entity &amp;: Control + Shift + 7</li>
+  <li>Insert entity Space: Control + Shift + Space</li>
+  <li>Insert Scriptogr.am Header: Control + Shift + G</li>
+  <li>Shift Line Left: Select lines, Cmd + [</li>
+  <li>Shift Line Right: Select lines, Cmd + ]</li>
+  <li>New Line: Cmd + Return</li>
+  <li>Comment: Cmd + /</li>
+  <li>Hard Linebreak: Control + Return</li>
+</ul>
+
+<h4 id="edit">Edit</h4>
+
+<ul>
+  <li>Auto complete current word: Esc</li>
+  <li>Find: Cmd + F</li>
+  <li>Close find bar: Esc</li>
+</ul>
+
+<h4 id="post">Post</h4>
+
+<ul>
+  <li>Post on Scriptogr.am: Control + Shift + S</li>
+  <li>Post on Tumblr: Control + Shift + T</li>
+</ul>
+
+<h4 id="export">Export</h4>
+
+<ul>
+  <li>Export HTML: Option + Cmd + E</li>
+  <li>Export PDF:  Option + Cmd + P</li>
+</ul>
+
+<h3 id="and-more">And more?</h3>
+
+<p>Don’t forget to check Preferences, lots of useful options are there.</p>
+
+<p>Follow <a href="https://twitter.com/mou">@Mou</a> on Twitter for the latest news.</p>
+
+<p>For feedback, use the menu <code>Help</code> - <code>Send Feedback</code></p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>And that’s the footnote. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+      <hr />
+      <footer role="contentinfo">
+        
+        <p class="byline"><strong>Markdown语法</strong> was published on <time datetime="2015-12-02T00:57:16+08:00">December 02, 2015</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+
+  
+  
+    <section class="ds-thread" data-thread-key="" data-title="" data-url="/tech/MarkDown/"></section>
+  
+
+  </article>
+
+
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  
+  <div class="related-articles">
+  <h4>You might also enjoy <small class="pull-right">(<a href="http://127.0.0.1:4000/posts/">View all posts</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://127.0.0.1:4000/tech/jekyll-github-octopress-duoshuo/" title="Jekyll+Github+Octopress+Duoshuo搭建个人博客">Jekyll+Github+Octopress+Duoshuo搭建个人博客</a></li>
+    
+      <li><a href="http://127.0.0.1:4000/tech/test4/" title="Test4">Test4</a></li>
+    
+      <li><a href="http://127.0.0.1:4000/tech/test3/" title="Test3">Test3</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  
+  <footer>
+    
+
+<span>&copy; 2015 凌骏. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://127.0.0.1:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://127.0.0.1:4000/assets/js/scripts.min.js"></script>
+
+
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"verylucky"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+</body>
+</html>

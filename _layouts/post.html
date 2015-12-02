@@ -5,6 +5,25 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 {% include _head.html %}
+<style type="text/css">
+
+    .ds-powered-by
+    {
+        display:none;
+    }
+    .ds-meta
+    {
+        display:none;
+    }
+    .ds-comments-info
+    {
+        display:none;
+    }
+    .ds-paginator
+    {
+        display:none;
+    }
+    </style>
 </head>
 
 <body class="post">
@@ -48,10 +67,17 @@
         <p class="byline"><strong>{{ page.title }}</strong> was published on <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>{% if page.modified %} and last modified on <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time>{% endif %}.</p>
       </footer>
     </div><!-- /.article-wrap -->
+
   {% if site.owner.disqus-shortname and page.comments == true %}
     <section id="disqus_thread"></section><!-- /#disqus_thread -->
   {% endif %}
+  {% if site.owner.duoshuo-shortname and page.comments == true %}
+    <section class="ds-thread" data-thread-key="{{ date }}" data-title="{{title}}" data-url="{{site.production_url}}{{ page.url }}"></section>
+  {% endif %}
+
   </article>
+
+
 </div><!-- /#main -->
 
 <div class="footer-wrap">

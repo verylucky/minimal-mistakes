@@ -1,13 +1,22 @@
 # Site navigation links
 
-- title: 文章归档
-  url: /posts/
+#- title: Theme Setup
+#  url: /theme-setup/
 
-- title: Theme Setup
-  url: /theme-setup/
+#- title: 联系我
+#  url: /contact/
+
+- title: 技术积累
+  url: /tech-article/
+
+- title: 心情随笔
+  url: /life-article/
 
 - title: 关于我
   url: /about/
 
-- title: contact
-  url: /contact/
+- title: Tags
+  url: /tags/
+
+- title: 文章归档
+  url: /archive/
