@@ -2,13 +2,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">凌骏的技术博客</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://127.0.0.1:4000/feed.xml" />
-<link rel="alternate" type="text/html" href="http://127.0.0.1:4000" />
-<updated>2015-12-03T01:39:34+08:00</updated>
-<id>http://127.0.0.1:4000/</id>
+<link rel="self" type="application/atom+xml" href="http://verylucky.github.io/feed.xml" />
+<link rel="alternate" type="text/html" href="http://verylucky.github.io" />
+<updated>2015-12-03T10:09:51+08:00</updated>
+<id>http://verylucky.github.io/</id>
 <author>
   <name>凌骏</name>
-  <uri>http://127.0.0.1:4000/</uri>
+  <uri>http://verylucky.github.io/</uri>
   <email>526093880@qq.com</email>
 </author>
 
@@ -17,13 +17,13 @@
 
 <entry>
   <title type="html"><![CDATA[Jekyll+Github+Octopress+Duoshuo搭建个人博客]]></title>
-  <link rel="alternate" type="text/html" href="http://127.0.0.1:4000/tech/jekyll-github-octopress-duoshuo/" />
-  <id>http://127.0.0.1:4000/tech/jekyll-github-octopress-duoshuo</id>
+  <link rel="alternate" type="text/html" href="http://verylucky.github.io/tech/jekyll-github-octopress-duoshuo/" />
+  <id>http://verylucky.github.io/tech/jekyll-github-octopress-duoshuo</id>
   <published>2015-12-02T19:41:26+08:00</published>
   <updated>2015-12-02T19:41:26+08:00</updated>
   <author>
     <name>凌骏</name>
-    <uri>http://127.0.0.1:4000</uri>
+    <uri>http://verylucky.github.io</uri>
     <email>526093880@qq.com</email>
   </author>
   <content type="html">
@@ -151,7 +151,7 @@ var duoshuoQuery = {short_name:&amp;quot;verylucky&amp;quot;};
 
 &lt;p&gt;至此，等域名解析生效，即可访问你的个人博客了。&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://127.0.0.1:4000/tech/jekyll-github-octopress-duoshuo/&quot;&gt;Jekyll+Github+Octopress+Duoshuo搭建个人博客&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://127.0.0.1:4000&quot;&gt;凌骏的技术博客&lt;/a&gt; on December 02, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/tech/jekyll-github-octopress-duoshuo/&quot;&gt;Jekyll+Github+Octopress+Duoshuo搭建个人博客&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;凌骏的技术博客&lt;/a&gt; on December 02, 2015.&lt;/p&gt;
   </content>
 </entry>
 
@@ -160,13 +160,13 @@ var duoshuoQuery = {short_name:&amp;quot;verylucky&amp;quot;};
 
 <entry>
   <title type="html"><![CDATA[Markdown语法]]></title>
-  <link rel="alternate" type="text/html" href="http://127.0.0.1:4000/tech/MarkDown/" />
-  <id>http://127.0.0.1:4000/tech/MarkDown</id>
+  <link rel="alternate" type="text/html" href="http://verylucky.github.io/tech/MarkDown/" />
+  <id>http://verylucky.github.io/tech/MarkDown</id>
   <published>2015-12-02T00:57:16+08:00</published>
   <updated>2015-12-02T00:57:16+08:00</updated>
   <author>
     <name>凌骏</name>
-    <uri>http://127.0.0.1:4000</uri>
+    <uri>http://verylucky.github.io</uri>
     <email>526093880@qq.com</email>
   </author>
   <content type="html">
@@ -469,7 +469,7 @@ a start and end fence lines to delimit the code block.
   &lt;/ol&gt;
 &lt;/div&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://127.0.0.1:4000/tech/MarkDown/&quot;&gt;Markdown语法&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://127.0.0.1:4000&quot;&gt;凌骏的技术博客&lt;/a&gt; on December 02, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/tech/MarkDown/&quot;&gt;Markdown语法&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;凌骏的技术博客&lt;/a&gt; on December 02, 2015.&lt;/p&gt;
   </content>
 </entry>
 
