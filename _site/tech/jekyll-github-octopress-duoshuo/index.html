@@ -6,14 +6,14 @@
 <head>
 <meta charset="utf-8">
 <title>Jekyll+Github+Octopress+Duoshuo搭建个人博客 &#8211; 凌骏的技术博客</title>
-
+<meta name="description" content="“Jekyll是什么？ Jekyll（发音/’dʒiːk əl/，”杰克尔”）是一个静态站点生成器，它会根据网页源码生成静态文件。它提供了模板、变量、插件等功能，所以实际上可以用来编写整个网站。你先在本地编写符合Jekyll规范的网站源码，然后上传到github，由github生成并托管整个网站。”">
 <meta name="keywords" content="jekyll, Github">
 
 
 
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="Jekyll+Github+Octopress+Duoshuo搭建个人博客">
-
+<meta name="twitter:description" content="“Jekyll是什么？ Jekyll（发音/’dʒiːk əl/，”杰克尔”）是一个静态站点生成器，它会根据网页源码生成静态文件。它提供了模板、变量、插件等功能，所以实际上可以用来编写整个网站。你先在本地编写符合Jekyll规范的网站源码，然后上传到github，由github生成并托管整个网站。”">
 
 
 
@@ -24,7 +24,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jekyll+Github+Octopress+Duoshuo搭建个人博客">
-
+<meta property="og:description" content="“Jekyll是什么？ Jekyll（发音/’dʒiːk əl/，”杰克尔”）是一个静态站点生成器，它会根据网页源码生成静态文件。它提供了模板、变量、插件等功能，所以实际上可以用来编写整个网站。你先在本地编写符合Jekyll规范的网站源码，然后上传到github，由github生成并托管整个网站。”">
 <meta property="og:url" content="http://127.0.0.1:4000/tech/jekyll-github-octopress-duoshuo/">
 <meta property="og:site_name" content="凌骏的技术博客">
 
@@ -181,304 +181,129 @@
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p><img src="http://25.io/mou/Mou_128.png" alt="Mou icon" /></p>
-
-<h2 id="overview">Overview</h2>
-
-<p><strong>Mou</strong>, the missing Markdown editor for <em>web developers</em>.</p>
-
-<h3 id="syntax">Syntax</h3>
-
-<h4 id="strong-and-emphasize">Strong and Emphasize</h4>
-
-<p><strong>strong</strong> or <strong>strong</strong> ( Cmd + B )</p>
-
-<p><em>emphasize</em> or <em>emphasize</em> ( Cmd + I )</p>
-
-<p><strong>Sometimes I want a lot of text to be bold.
-Like, seriously, a <em>LOT</em> of text</strong></p>
-
-<h4 id="blockquotes">Blockquotes</h4>
-
-<blockquote>
-  <p>Right angle brackets &gt; are used for block quotes.</p>
-</blockquote>
-
-<h4 id="links-and-email">Links and Email</h4>
-
-<p>An email <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#101;&#120;&#097;&#109;&#112;&#108;&#101;&#064;&#101;&#120;&#097;&#109;&#112;&#108;&#101;&#046;&#099;&#111;&#109;">&#101;&#120;&#097;&#109;&#112;&#108;&#101;&#064;&#101;&#120;&#097;&#109;&#112;&#108;&#101;&#046;&#099;&#111;&#109;</a> link.</p>
-
-<p>Simple inline link <a href="http://chenluois.com">http://chenluois.com</a>, another inline link <a href="http://25.io/smaller/">Smaller</a>, one more inline link with title <a href="http://resizesafari.com" title="a Safari extension">Resize</a>.</p>
-
-<p>A <a href="http://25.io/mou/" title="Markdown editor on Mac OS X">reference style</a> link. Input id, then anywhere in the doc, define the link with corresponding id:</p>
-
-<p>Titles ( or called tool tips ) in the links are optional.</p>
-
-<h4 id="images">Images</h4>
-
-<p>An inline image <img src="http://25.io/smaller/favicon.ico" alt="Smaller icon" title="Title here" />, title is optional.</p>
-
-<p>A <img src="http://resizesafari.com/favicon.ico" alt="Resize icon" title="Title" /> reference style image.</p>
-
-<h4 id="inline-code-and-block-code">Inline code and Block code</h4>
-
-<p>Inline code are surround by <code>backtick</code> key. To create a block code:</p>
-
-<pre><code>Indent each line by at least 1 tab, or 4 spaces.
-var Mou = exactlyTheAppIwant; 
-</code></pre>
-
-<h4 id="ordered-lists">Ordered Lists</h4>
-
-<p>Ordered lists are created using “1.” + Space:</p>
-
-<ol>
-  <li>Ordered list item</li>
-  <li>Ordered list item</li>
-  <li>Ordered list item</li>
-</ol>
-
-<h4 id="unordered-lists">Unordered Lists</h4>
-
-<p>Unordered list are created using “*” + Space:</p>
-
-<ul>
-  <li>Unordered list item</li>
-  <li>Unordered list item</li>
-  <li>Unordered list item</li>
-</ul>
-
-<p>Or using “-“ + Space:</p>
-
-<ul>
-  <li>Unordered list item</li>
-  <li>Unordered list item</li>
-  <li>Unordered list item</li>
-</ul>
-
-<h4 id="hard-linebreak">Hard Linebreak</h4>
-
-<p>End a line with two or more spaces will create a hard linebreak, called <code>&lt;br /&gt;</code> in HTML. ( Control + Return )<br />
-Above line ended with 2 spaces.</p>
-
-<h4 id="horizontal-rules">Horizontal Rules</h4>
-
-<p>Three or more asterisks or dashes:</p>
-
-<hr />
-
-<hr />
-
-<hr />
-
-<h4 id="headers">Headers</h4>
-
-<p>Setext-style:</p>
-
-<h1 id="this-is-h1">This is H1</h1>
-
-<h2 id="this-is-h2">This is H2</h2>
-
-<p>atx-style:</p>
-
-<h1 id="this-is-h1-1">This is H1</h1>
-<p>## This is H2
-### This is H3
-#### This is H4
-##### This is H5
-###### This is H6</p>
-
-<h3 id="extra-syntax">Extra Syntax</h3>
-
-<h4 id="footnotes">Footnotes</h4>
-
-<p>Footnotes work mostly like reference-style links. A footnote is made of two things: a marker in the text that will become a superscript number; a footnote definition that will be placed in a list of footnotes at the end of the document. A footnote looks like this:</p>
-
-<p>That’s some text with a footnote.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<h4 id="strikethrough">Strikethrough</h4>
-
-<p>Wrap with 2 tilde characters:</p>
-
-<p>~~Strikethrough~~</p>
-
-<h4 id="fenced-code-blocks">Fenced Code Blocks</h4>
-
-<p>Start with a line containing 3 or more backticks, and ends with the first line with the same number of backticks:</p>
-
-<p><code>
-Fenced code blocks are like Stardard Markdown’s regular code
-blocks, except that they’re not indented and instead rely on
-a start and end fence lines to delimit the code block.
-</code></p>
-
-<h4 id="tables">Tables</h4>
-
-<p>A simple table looks like this:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>First Header</th>
-      <th>Second Header</th>
-      <th>Third Header</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Content Cell</td>
-      <td>Content Cell</td>
-      <td>Content Cell</td>
-    </tr>
-    <tr>
-      <td>Content Cell</td>
-      <td>Content Cell</td>
-      <td>Content Cell</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>If you wish, you can add a leading and tailing pipe to each line of the table:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>First Header</th>
-      <th>Second Header</th>
-      <th>Third Header</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Content Cell</td>
-      <td>Content Cell</td>
-      <td>Content Cell</td>
-    </tr>
-    <tr>
-      <td>Content Cell</td>
-      <td>Content Cell</td>
-      <td>Content Cell</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Specify alignment for each column by adding colons to separator lines:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">First Header</th>
-      <th style="text-align: center">Second Header</th>
-      <th style="text-align: right">Third Header</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">Left</td>
-      <td style="text-align: center">Center</td>
-      <td style="text-align: right">Right</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Left</td>
-      <td style="text-align: center">Center</td>
-      <td style="text-align: right">Right</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="shortcuts">Shortcuts</h3>
-
-<h4 id="view">View</h4>
-
-<ul>
-  <li>Toggle live preview: Shift + Cmd + I</li>
-  <li>Toggle Words Counter: Shift + Cmd + W</li>
-  <li>Toggle Transparent: Shift + Cmd + T</li>
-  <li>Toggle Floating: Shift + Cmd + F</li>
-  <li>Left/Right = 1/1: Cmd + 0</li>
-  <li>Left/Right = 3/1: Cmd + +</li>
-  <li>Left/Right = 1/3: Cmd + -</li>
-  <li>Toggle Writing orientation: Cmd + L</li>
-  <li>Toggle fullscreen: Control + Cmd + F</li>
-</ul>
-
-<h4 id="actions">Actions</h4>
-
-<ul>
-  <li>Copy HTML: Option + Cmd + C</li>
-  <li>Strong: Select text, Cmd + B</li>
-  <li>Emphasize: Select text, Cmd + I</li>
-  <li>Inline Code: Select text, Cmd + K</li>
-  <li>Strikethrough: Select text, Cmd + U</li>
-  <li>Link: Select text, Control + Shift + L</li>
-  <li>Image: Select text, Control + Shift + I</li>
-  <li>Select Word: Control + Option + W</li>
-  <li>Select Line: Shift + Cmd + L</li>
-  <li>Select All: Cmd + A</li>
-  <li>Deselect All: Cmd + D</li>
-  <li>Convert to Uppercase: Select text, Control + U</li>
-  <li>Convert to Lowercase: Select text, Control + Shift + U</li>
-  <li>Convert to Titlecase: Select text, Control + Option + U</li>
-  <li>Convert to List: Select lines, Control + L</li>
-  <li>Convert to Blockquote: Select lines, Control + Q</li>
-  <li>Convert to H1: Cmd + 1</li>
-  <li>Convert to H2: Cmd + 2</li>
-  <li>Convert to H3: Cmd + 3</li>
-  <li>Convert to H4: Cmd + 4</li>
-  <li>Convert to H5: Cmd + 5</li>
-  <li>Convert to H6: Cmd + 6</li>
-  <li>Convert Spaces to Tabs: Control + [</li>
-  <li>Convert Tabs to Spaces: Control + ]</li>
-  <li>Insert Current Date: Control + Shift + 1</li>
-  <li>Insert Current Time: Control + Shift + 2</li>
-  <li>Insert entity &lt;: Control + Shift + ,</li>
-  <li>Insert entity &gt;: Control + Shift + .</li>
-  <li>Insert entity &amp;: Control + Shift + 7</li>
-  <li>Insert entity Space: Control + Shift + Space</li>
-  <li>Insert Scriptogr.am Header: Control + Shift + G</li>
-  <li>Shift Line Left: Select lines, Cmd + [</li>
-  <li>Shift Line Right: Select lines, Cmd + ]</li>
-  <li>New Line: Cmd + Return</li>
-  <li>Comment: Cmd + /</li>
-  <li>Hard Linebreak: Control + Return</li>
-</ul>
-
-<h4 id="edit">Edit</h4>
-
-<ul>
-  <li>Auto complete current word: Esc</li>
-  <li>Find: Cmd + F</li>
-  <li>Close find bar: Esc</li>
-</ul>
-
-<h4 id="post">Post</h4>
-
-<ul>
-  <li>Post on Scriptogr.am: Control + Shift + S</li>
-  <li>Post on Tumblr: Control + Shift + T</li>
-</ul>
-
-<h4 id="export">Export</h4>
-
-<ul>
-  <li>Export HTML: Option + Cmd + E</li>
-  <li>Export PDF:  Option + Cmd + P</li>
-</ul>
-
-<h3 id="and-more">And more?</h3>
-
-<p>Don’t forget to check Preferences, lots of useful options are there.</p>
-
-<p>Follow <a href="https://twitter.com/mou">@Mou</a> on Twitter for the latest news.</p>
-
-<p>For feedback, use the menu <code>Help</code> - <code>Send Feedback</code></p>
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>And that’s the footnote. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+      <h3 id="jekyll">1. Jekyll部署</h3>
+
+<p>Jekyll是什么？
+Jekyll（发音/’dʒiːk əl/，”杰克尔”）是一个静态站点生成器，它会根据网页源码生成静态文件。它提供了模板、变量、插件等功能，所以实际上可以用来编写整个网站。你先在本地编写符合Jekyll规范的网站源码，然后上传到github，由github生成并托管整个网站。</p>
+
+<h4 id="ruby">安装Ruby</h4>
+<p>Jekyll使用ruby开发，第一步必须先安装ruby环境，mac下自带，因此这里pass</p>
+
+<h4 id="jekyll-1">部署Jekyll</h4>
+<p>搭建Jekyll环境非常简单，可以参考<a href="http://jekyllrb.com/docs/quickstart/">http://jekyllrb.com/docs/quickstart/</a> 但是对于一个后台程序员而言，做界面美化实在是太纠结了，因此果断找开源模板fork之，minimal mistakes是一个相当优秀的模板，链接如下<a href="https://github.com/mmistakes/minimal-mistakes">https://github.com/mmistakes/minimal-mistakes</a>，然后在基础上进行自定义；</p>
+
+<p>minimal mistakes主题运行在特定的bundle环境下，安装最新的ruby、jekyll可能会出现兼容性问题，如果出现问题，运行</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve
+<span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll build
+<span class="nv">$ </span>bundle <span class="nb">exec </span>octopress new page xxx
+<span class="nv">$ </span>bundle <span class="nb">exec </span>octopress new page xxx</code></pre></div>
+
+<p>同时github pages使用git进行同步，几条基本的Git命令还是需要记住</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git clone 
+<span class="nv">$ </span>git status
+<span class="nv">$ </span>git pull
+<span class="nv">$ </span>git config 
+<span class="nv">$ </span>git push origin master
+<span class="nv">$ </span>git add -A 
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;comment&quot;</span></code></pre></div>
+
+<p>fork下来之后，按照这个配置即可在本地运行主题 <a href="https://mmistakes.github.io/minimal-mistakes/theme-setup/">https://mmistakes.github.io/minimal-mistakes/theme-setup/</a></p>
+
+<h4 id="octopress">Octopress</h4>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">show</span>
+  <span class="vi">@widget</span> <span class="o">=</span> <span class="no">Widget</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>  
+  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>  
+    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># show.html.erb    </span>
+    <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@widget</span> <span class="p">}</span>    
+  <span class="k">end</span>  
+<span class="k">end</span></code></pre></div>
+
+<p>Octopress是一个很强大的博客工具，但是在这里，我们只用它按照模板为我们生成需要发表的文章文件和页面文件模板，只需要如下两个命令：
+bundle exec octopress new page xxx
+bundle exec octopress new page xxx
+默认在_post目录下生成符合jekyll命名要求的文档，在根目录下生成 xxx.html，可以把xxx.html 移动到 xxx文件夹中，然后将文件名改为index.md，简化访问链接</p>
+
+<h3 id="section">2. 个性化定制</h3>
+<p>基本部署完框架，后面就要开始定制化了，一个博客基本的内容至少需要分类categories，标签tags，评论comments，归档archive。Jekyll框架使用Liquid标记语言进行模板处理，整个网站为一个site，每个页面为一个page，每篇文章为一个post。site包括多个categories和tags，每个page也有多个categories和tags，每个tag和category下又有多个post，因此我们需要根据tag和category将文件进行分类，并且按照年限对其归档，同时加上评论功能。
+各对象包含的属性参考：<a href="http://jekyllrb.com/docs/variables/">http://jekyllrb.com/docs/variables/</a></p>
+
+<p>按照tags对文章进行分类 参考_tags.html</p>
+
+<p>按照page的category对文章进行归类 参考_categories.html</p>
+
+<p>按照年份对文章进行归档 参考_post-index.html</p>
+
+<h3 id="section-1">3. 增加评论功能</h3>
+<p>模板自带disqus评论组件，只需要在_config.yml文件中将  disqus-shortname:设置为注册名，然后在post模板中加上comments = true 即可。但是disqus不符合本土化环境，不能集成qq、wx、weibo这几大社交平台，因此选择本土化的多说评论系统。（Ps. 只要打开稍微看看，就知道基本就是照着disqus抄袭过来的，用起来没有一丁点区别）
+在_include文件夹下，有个_scripts.html文件，这里包含了google的分析工具和评论插件的公共部分代码，我们需要把多说官网提供的功能部分代码包含进来。</p>
+
+<p><strong><em>新建_duoshuo_comments.html</em></strong></p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c">&lt;!--</span> <span class="err">多说公共</span><span class="nx">JS</span><span class="err">代码</span> <span class="nx">start</span> <span class="p">(</span><span class="err">一个网页只需插入一次</span><span class="p">)</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
+<span class="kd">var</span> <span class="nx">duoshuoQuery</span> <span class="o">=</span> <span class="p">{</span><span class="nx">short_name</span><span class="o">:</span><span class="s2">&quot;verylucky&quot;</span><span class="p">};</span>
+	<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="kd">var</span> <span class="nx">ds</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+		<span class="nx">ds</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span><span class="nx">ds</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+		<span class="nx">ds</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">==</span> <span class="s1">&#39;https:&#39;</span> <span class="o">?</span> <span class="s1">&#39;https:&#39;</span> <span class="o">:</span> <span class="s1">&#39;http:&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;//static.duoshuo.com/embed.unstable.js&#39;</span><span class="p">;</span>
+		<span class="nx">ds</span><span class="p">.</span><span class="nx">charset</span> <span class="o">=</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">;</span>
+		<span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+		 <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">ds</span><span class="p">);</span>
+	<span class="p">})();</span>
+	<span class="o">&lt;</span><span class="err">/script&gt;</span>
+<span class="c">&lt;!--</span> <span class="err">多说公共</span><span class="nx">JS</span><span class="err">代码</span> <span class="nx">end</span> <span class="o">--&gt;</span></code></pre></div>
+
+<p><strong><em>将下面代码加在_scripts.html底部</em></strong></p>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var duoshuoQuery = {short_name:&quot;verylucky&quot;};
+	(function() {
+		var ds = document.createElement(&#39;script&#39;);
+		ds.type = &#39;text/javascript&#39;;ds.async = true;
+		ds.src = (document.location.protocol == &#39;https:&#39; ? &#39;https:&#39; : &#39;http:&#39;) + &#39;//static.duoshuo.com/embed.unstable.js&#39;;
+		ds.charset = &#39;UTF-8&#39;;
+		(document.getElementsByTagName(&#39;head&#39;)[0]
+		 || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(ds);
+	})();
+	&lt;/script&gt;
+&lt;!-- 多说公共JS代码 end --&gt;</code></pre></div>
+
+<p><strong><em>接口部分代码</em></strong></p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">&quot;ds-thread&quot;</span> <span class="na">data-thread-key=</span><span class="s">&quot;&quot;</span> <span class="na">data-title=</span><span class="s">&quot;&quot;</span> <span class="na">data-url=</span><span class="s">&quot;/tech/jekyll-github-octopress-duoshuo/&quot;</span><span class="nt">&gt;&lt;/section&gt;</span></code></pre></div>
+
+<p><strong><em>使用CSS去掉部分不想显示的内容</em></strong></p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="o">&lt;</span><span class="nt">style</span> <span class="nt">type</span><span class="o">=</span><span class="s2">&quot;text/css&quot;</span><span class="o">&gt;</span>
+    <span class="nc">.ds-powered-by</span>
+    <span class="p">{</span>
+        <span class="k">display</span><span class="o">:</span><span class="k">none</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.ds-meta</span>
+    <span class="p">{</span>
+        <span class="k">display</span><span class="o">:</span><span class="k">none</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.ds-comments-info</span>
+    <span class="p">{</span>
+        <span class="k">display</span><span class="o">:</span><span class="k">none</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.ds-paginator</span>
+    <span class="p">{</span>
+        <span class="k">display</span><span class="o">:</span><span class="k">none</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="o">&lt;/</span><span class="nt">style</span><span class="o">&gt;</span></code></pre></div>
+
+<h3 id="github-pages">4. 设置Github Pages域名解析</h3>
+<p>购买域名后，如果是二级域名，则建立CNAME记录，将username.github.io映射到自己的域名；如果是一级域名，则建立A记录，将域名映射到上面链接给出的两个ip地址之一，通过该域名访问到该ip之后，Github会根据根目录下CNAME文件标记的域名进行解析，找到对应的pages页面。
+参考下面链接：</p>
+
+<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/">https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/</a></p>
+
+<p>至此，等域名解析生效，即可访问你的个人博客了。</p>
 
       <hr />
       <footer role="contentinfo">
