@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-<title type="text"></title>
+<title type="text">凌骏的技术博客</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="/feed.xml" />
-<link rel="alternate" type="text/html" href="" />
-<updated>2015-12-03T17:05:10+08:00</updated>
-<id>/</id>
+<link rel="self" type="application/atom+xml" href="http://127.0.0.1:4000/feed.xml" />
+<link rel="alternate" type="text/html" href="http://127.0.0.1:4000" />
+<updated>2015-12-03T17:11:11+08:00</updated>
+<id>http://127.0.0.1:4000/</id>
 <author>
-  <name></name>
-  <uri>/</uri>
-  
+  <name>凌骏</name>
+  <uri>http://127.0.0.1:4000/</uri>
+  <email>526093880@qq.com</email>
 </author>
 
 
@@ -17,14 +17,14 @@
 
 <entry>
   <title type="html"><![CDATA[Jekyll+Github+Octopress+Duoshuo搭建个人博客]]></title>
-  <link rel="alternate" type="text/html" href="/tech/2015/12/02/jekyll-github-octopress-duoshuo.html" />
-  <id>/tech/2015/12/02/jekyll-github-octopress-duoshuo</id>
+  <link rel="alternate" type="text/html" href="http://127.0.0.1:4000/tech/jekyll-github-octopress-duoshuo/" />
+  <id>http://127.0.0.1:4000/tech/jekyll-github-octopress-duoshuo</id>
   <published>2015-12-02T19:41:26+08:00</published>
   <updated>2015-12-02T19:41:26+08:00</updated>
   <author>
-    <name></name>
-    <uri></uri>
-    
+    <name>凌骏</name>
+    <uri>http://127.0.0.1:4000</uri>
+    <email>526093880@qq.com</email>
   </author>
   <content type="html">
     &lt;h3 id=&quot;jekyll&quot;&gt;1. Jekyll部署&lt;/h3&gt;
@@ -108,7 +108,7 @@ bundle exec octopress new page xxx
 
 &lt;h4 id=&quot;section-2&quot;&gt;接口部分代码&lt;/h4&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;section&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ds-thread&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-thread-key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-url=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/tech/2015/12/02/jekyll-github-octopress-duoshuo.html&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/section&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;section&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ds-thread&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-thread-key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-url=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/tech/jekyll-github-octopress-duoshuo/&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/section&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;css&quot;&gt;使用CSS去掉部分不想显示的内容&lt;/h4&gt;
 
@@ -137,7 +137,7 @@ bundle exec octopress new page xxx
 &lt;a href=&quot;https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/&quot;&gt;https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/&lt;/a&gt;&lt;br /&gt;
 至此，等域名解析生效，即可访问你的个人博客了。&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;/tech/2015/12/02/jekyll-github-octopress-duoshuo.html&quot;&gt;Jekyll+Github+Octopress+Duoshuo搭建个人博客&lt;/a&gt; was originally published by  at &lt;a href=&quot;&quot;&gt;&lt;/a&gt; on December 02, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://127.0.0.1:4000/tech/jekyll-github-octopress-duoshuo/&quot;&gt;Jekyll+Github+Octopress+Duoshuo搭建个人博客&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://127.0.0.1:4000&quot;&gt;凌骏的技术博客&lt;/a&gt; on December 02, 2015.&lt;/p&gt;
   </content>
 </entry>
 
@@ -146,14 +146,14 @@ bundle exec octopress new page xxx
 
 <entry>
   <title type="html"><![CDATA[Markdown语法]]></title>
-  <link rel="alternate" type="text/html" href="/tech/2015/12/02/MarkDown.html" />
-  <id>/tech/2015/12/02/MarkDown</id>
+  <link rel="alternate" type="text/html" href="http://127.0.0.1:4000/tech/MarkDown/" />
+  <id>http://127.0.0.1:4000/tech/MarkDown</id>
   <published>2015-12-02T00:57:16+08:00</published>
   <updated>2015-12-02T00:57:16+08:00</updated>
   <author>
-    <name></name>
-    <uri></uri>
-    
+    <name>凌骏</name>
+    <uri>http://127.0.0.1:4000</uri>
+    <email>526093880@qq.com</email>
   </author>
   <content type="html">
     &lt;p&gt;&lt;img src=&quot;http://25.io/mou/Mou_128.png&quot; alt=&quot;Mou icon&quot; /&gt;&lt;/p&gt;
@@ -455,7 +455,7 @@ a start and end fence lines to delimit the code block.
   &lt;/ol&gt;
 &lt;/div&gt;
 
-    &lt;p&gt;&lt;a href=&quot;/tech/2015/12/02/MarkDown.html&quot;&gt;Markdown语法&lt;/a&gt; was originally published by  at &lt;a href=&quot;&quot;&gt;&lt;/a&gt; on December 02, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://127.0.0.1:4000/tech/MarkDown/&quot;&gt;Markdown语法&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://127.0.0.1:4000&quot;&gt;凌骏的技术博客&lt;/a&gt; on December 02, 2015.&lt;/p&gt;
   </content>
 </entry>
 
