@@ -64,11 +64,10 @@ bundle exec octopress new page xxx
 基本部署完框架，后面就要开始定制化了，一个博客基本的内容至少需要分类categories，标签tags，评论comments，归档archive。Jekyll框架使用Liquid标记语言进行模板处理，整个网站为一个site，每个页面为一个page，每篇文章为一个post。site包括多个categories和tags，每个page也有多个categories和tags，每个tag和category下又有多个post，因此我们需要根据tag和category将文件进行分类，并且按照年限对其归档，同时加上评论功能。
 各对象包含的属性参考：<http://jekyllrb.com/docs/variables/> 
 
-按照tags对文章进行分类 参考_tags.html
-
-按照page的category对文章进行归类 参考_categories.html
-
-按照年份对文章进行归档 参考_post-index.html
+**1. 按照tags对文章进行分类 参考 _tags.html**<br>
+**2. 按照page的category对文章进行归类 参考 _categories.html**<br>
+**3. 按照年份对文章进行归档 参考 _post-index.html**
+{:.notice}
 
 
 
@@ -96,9 +95,10 @@ var duoshuoQuery = {short_name:"verylucky"};
 
 ####将下面代码加在_scripts.html底部
 {% highlight text %}
-{% if page.comments %}
-  {% include _duoshuo_comments.html %}
-{% endif %}
+{ if page.comments }
+  { include _duoshuo_comments.html }
+{ endif }
+//去掉了百分号，因为blog本身使用liquid解析，会被解析成html代码
 {% endhighlight %}
 
 
@@ -132,8 +132,6 @@ var duoshuoQuery = {short_name:"verylucky"};
 
 ###4. 设置Github Pages域名解析
 购买域名后，如果是二级域名，则建立CNAME记录，将username.github.io映射到自己的域名；如果是一级域名，则建立A记录，将域名映射到上面链接给出的两个ip地址之一，通过该域名访问到该ip之后，Github会根据根目录下CNAME文件标记的域名进行解析，找到对应的pages页面。
-参考下面链接：
-
-<https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/>
-
+参考下面链接:<br>
+<https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/><br>
 至此，等域名解析生效，即可访问你的个人博客了。

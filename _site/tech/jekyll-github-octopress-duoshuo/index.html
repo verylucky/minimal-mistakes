@@ -229,11 +229,9 @@ bundle exec octopress new page xxx
 <p>基本部署完框架，后面就要开始定制化了，一个博客基本的内容至少需要分类categories，标签tags，评论comments，归档archive。Jekyll框架使用Liquid标记语言进行模板处理，整个网站为一个site，每个页面为一个page，每篇文章为一个post。site包括多个categories和tags，每个page也有多个categories和tags，每个tag和category下又有多个post，因此我们需要根据tag和category将文件进行分类，并且按照年限对其归档，同时加上评论功能。
 各对象包含的属性参考：<a href="http://jekyllrb.com/docs/variables/">http://jekyllrb.com/docs/variables/</a></p>
 
-<p>按照tags对文章进行分类 参考_tags.html</p>
-
-<p>按照page的category对文章进行归类 参考_categories.html</p>
-
-<p>按照年份对文章进行归档 参考_post-index.html</p>
+<p class="notice"><strong>1. 按照tags对文章进行分类 参考 _tags.html</strong><br />
+<strong>2. 按照page的category对文章进行归类 参考 _categories.html</strong><br />
+<strong>3. 按照年份对文章进行归档 参考 _post-index.html</strong></p>
 
 <h3 id="section-1">3. 增加评论功能</h3>
 <p>模板自带disqus评论组件，只需要在_config.yml文件中将  disqus-shortname:设置为注册名，然后在post模板中加上comments = true 即可。但是disqus不符合本土化环境，不能集成qq、wx、weibo这几大社交平台，因此选择本土化的多说评论系统。（Ps. 只要打开稍微看看，就知道基本就是照着disqus抄袭过来的，用起来没有一丁点区别）
@@ -257,19 +255,10 @@ bundle exec octopress new page xxx
 
 <h4 id="scriptshtml">将下面代码加在_scripts.html底部</h4>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-var duoshuoQuery = {short_name:&quot;verylucky&quot;};
-	(function() {
-		var ds = document.createElement(&#39;script&#39;);
-		ds.type = &#39;text/javascript&#39;;ds.async = true;
-		ds.src = (document.location.protocol == &#39;https:&#39; ? &#39;https:&#39; : &#39;http:&#39;) + &#39;//static.duoshuo.com/embed.unstable.js&#39;;
-		ds.charset = &#39;UTF-8&#39;;
-		(document.getElementsByTagName(&#39;head&#39;)[0]
-		 || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(ds);
-	})();
-	&lt;/script&gt;
-&lt;!-- 多说公共JS代码 end --&gt;</code></pre></div>
+<div class="highlight"><pre><code class="language-text" data-lang="text">{ if page.comments }
+  { include _duoshuo_comments.html }
+{ endif }
+//去掉了百分号，因为blog本身使用liquid解析，会被解析成html代码</code></pre></div>
 
 <h4 id="section-2">接口部分代码</h4>
 
@@ -298,11 +287,9 @@ var duoshuoQuery = {short_name:&quot;verylucky&quot;};
 
 <h3 id="github-pages">4. 设置Github Pages域名解析</h3>
 <p>购买域名后，如果是二级域名，则建立CNAME记录，将username.github.io映射到自己的域名；如果是一级域名，则建立A记录，将域名映射到上面链接给出的两个ip地址之一，通过该域名访问到该ip之后，Github会根据根目录下CNAME文件标记的域名进行解析，找到对应的pages页面。
-参考下面链接：</p>
-
-<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/">https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/</a></p>
-
-<p>至此，等域名解析生效，即可访问你的个人博客了。</p>
+参考下面链接:<br />
+<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/">https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/</a><br />
+至此，等域名解析生效，即可访问你的个人博客了。</p>
 
       <hr />
       <footer role="contentinfo">

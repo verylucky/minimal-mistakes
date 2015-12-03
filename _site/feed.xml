@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://verylucky.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="http://verylucky.github.io" />
-<updated>2015-12-03T11:38:40+08:00</updated>
+<updated>2015-12-03T12:46:19+08:00</updated>
 <id>http://verylucky.github.io/</id>
 <author>
   <name>凌骏</name>
@@ -75,11 +75,9 @@ bundle exec octopress new page xxx
 &lt;p&gt;基本部署完框架，后面就要开始定制化了，一个博客基本的内容至少需要分类categories，标签tags，评论comments，归档archive。Jekyll框架使用Liquid标记语言进行模板处理，整个网站为一个site，每个页面为一个page，每篇文章为一个post。site包括多个categories和tags，每个page也有多个categories和tags，每个tag和category下又有多个post，因此我们需要根据tag和category将文件进行分类，并且按照年限对其归档，同时加上评论功能。
 各对象包含的属性参考：&lt;a href=&quot;http://jekyllrb.com/docs/variables/&quot;&gt;http://jekyllrb.com/docs/variables/&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;按照tags对文章进行分类 参考_tags.html&lt;/p&gt;
-
-&lt;p&gt;按照page的category对文章进行归类 参考_categories.html&lt;/p&gt;
-
-&lt;p&gt;按照年份对文章进行归档 参考_post-index.html&lt;/p&gt;
+&lt;p class=&quot;notice&quot;&gt;&lt;strong&gt;1. 按照tags对文章进行分类 参考 _tags.html&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;2. 按照page的category对文章进行归类 参考 _categories.html&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;3. 按照年份对文章进行归档 参考 _post-index.html&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;3. 增加评论功能&lt;/h3&gt;
 &lt;p&gt;模板自带disqus评论组件，只需要在_config.yml文件中将  disqus-shortname:设置为注册名，然后在post模板中加上comments = true 即可。但是disqus不符合本土化环境，不能集成qq、wx、weibo这几大社交平台，因此选择本土化的多说评论系统。（Ps. 只要打开稍微看看，就知道基本就是照着disqus抄袭过来的，用起来没有一丁点区别）
@@ -103,19 +101,10 @@ bundle exec octopress new page xxx
 
 &lt;h4 id=&quot;scriptshtml&quot;&gt;将下面代码加在_scripts.html底部&lt;/h4&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&amp;gt;
-&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
-var duoshuoQuery = {short_name:&amp;quot;verylucky&amp;quot;};
-	(function() {
-		var ds = document.createElement(&amp;#39;script&amp;#39;);
-		ds.type = &amp;#39;text/javascript&amp;#39;;ds.async = true;
-		ds.src = (document.location.protocol == &amp;#39;https:&amp;#39; ? &amp;#39;https:&amp;#39; : &amp;#39;http:&amp;#39;) + &amp;#39;//static.duoshuo.com/embed.unstable.js&amp;#39;;
-		ds.charset = &amp;#39;UTF-8&amp;#39;;
-		(document.getElementsByTagName(&amp;#39;head&amp;#39;)[0]
-		 || document.getElementsByTagName(&amp;#39;body&amp;#39;)[0]).appendChild(ds);
-	})();
-	&amp;lt;/script&amp;gt;
-&amp;lt;!-- 多说公共JS代码 end --&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;{ if page.comments }
+  { include _duoshuo_comments.html }
+{ endif }
+//去掉了百分号，因为blog本身使用liquid解析，会被解析成html代码&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;section-2&quot;&gt;接口部分代码&lt;/h4&gt;
 
@@ -144,11 +133,9 @@ var duoshuoQuery = {short_name:&amp;quot;verylucky&amp;quot;};
 
 &lt;h3 id=&quot;github-pages&quot;&gt;4. 设置Github Pages域名解析&lt;/h3&gt;
 &lt;p&gt;购买域名后，如果是二级域名，则建立CNAME记录，将username.github.io映射到自己的域名；如果是一级域名，则建立A记录，将域名映射到上面链接给出的两个ip地址之一，通过该域名访问到该ip之后，Github会根据根目录下CNAME文件标记的域名进行解析，找到对应的pages页面。
-参考下面链接：&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/&quot;&gt;https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;至此，等域名解析生效，即可访问你的个人博客了。&lt;/p&gt;
+参考下面链接:&lt;br /&gt;
+&lt;a href=&quot;https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/&quot;&gt;https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/&lt;/a&gt;&lt;br /&gt;
+至此，等域名解析生效，即可访问你的个人博客了。&lt;/p&gt;
 
     &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/tech/jekyll-github-octopress-duoshuo/&quot;&gt;Jekyll+Github+Octopress+Duoshuo搭建个人博客&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;凌骏的技术博客&lt;/a&gt; on December 02, 2015.&lt;/p&gt;
   </content>
