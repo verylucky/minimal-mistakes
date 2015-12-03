@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://verylucky.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="http://verylucky.github.io" />
-<updated>2015-12-03T10:09:51+08:00</updated>
+<updated>2015-12-03T10:50:54+08:00</updated>
 <id>http://verylucky.github.io/</id>
 <author>
   <name>凌骏</name>
@@ -36,9 +36,8 @@ Jekyll（发音/’dʒiːk əl/，”杰克尔”）是一个静态站点生成�
 &lt;p&gt;Jekyll使用ruby开发，第一步必须先安装ruby环境，mac下自带，因此这里pass&lt;/p&gt;
 
 &lt;h4 id=&quot;jekyll-1&quot;&gt;部署Jekyll&lt;/h4&gt;
-&lt;p&gt;搭建Jekyll环境非常简单，可以参考&lt;a href=&quot;http://jekyllrb.com/docs/quickstart/&quot;&gt;http://jekyllrb.com/docs/quickstart/&lt;/a&gt; 但是对于一个后台程序员而言，做界面美化实在是太纠结了，因此果断找开源模板fork之，minimal mistakes是一个相当优秀的模板，链接如下&lt;a href=&quot;https://github.com/mmistakes/minimal-mistakes&quot;&gt;https://github.com/mmistakes/minimal-mistakes&lt;/a&gt;，然后在基础上进行自定义；&lt;/p&gt;
-
-&lt;p&gt;minimal mistakes主题运行在特定的bundle环境下，安装最新的ruby、jekyll可能会出现兼容性问题，如果出现问题，运行&lt;/p&gt;
+&lt;p&gt;搭建Jekyll环境非常简单，可以参考&lt;a href=&quot;http://jekyllrb.com/docs/quickstart/&quot;&gt;http://jekyllrb.com/docs/quickstart/&lt;/a&gt; 但是对于一个后台程序员而言，做界面美化实在是太纠结了，因此果断找开源模板fork之，minimal mistakes是一个相当优秀的模板，链接如下&lt;a href=&quot;https://github.com/mmistakes/minimal-mistakes&quot;&gt;https://github.com/mmistakes/minimal-mistakes&lt;/a&gt;，然后在基础上进行自定义；
+minimal mistakes主题运行在特定的bundle环境下，安装最新的ruby、jekyll可能会出现兼容性问题，如果出现问题，运行&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
@@ -86,7 +85,7 @@ bundle exec octopress new page xxx
 &lt;p&gt;模板自带disqus评论组件，只需要在_config.yml文件中将  disqus-shortname:设置为注册名，然后在post模板中加上comments = true 即可。但是disqus不符合本土化环境，不能集成qq、wx、weibo这几大社交平台，因此选择本土化的多说评论系统。（Ps. 只要打开稍微看看，就知道基本就是照着disqus抄袭过来的，用起来没有一丁点区别）
 在_include文件夹下，有个_scripts.html文件，这里包含了google的分析工具和评论插件的公共部分代码，我们需要把多说官网提供的功能部分代码包含进来。&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;新建_duoshuo_comments.html&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&quot;duoshuocommentshtml&quot;&gt;新建_duoshuo_comments.html&lt;/h4&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;多说公共&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;JS&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;代码&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;一个网页只需插入一次&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
@@ -102,7 +101,7 @@ bundle exec octopress new page xxx
 	&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/script&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;多说公共&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;JS&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;代码&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;将下面代码加在_scripts.html底部&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&quot;scriptshtml&quot;&gt;将下面代码加在_scripts.html底部&lt;/h4&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&amp;gt;
 &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
@@ -118,11 +117,11 @@ var duoshuoQuery = {short_name:&amp;quot;verylucky&amp;quot;};
 	&amp;lt;/script&amp;gt;
 &amp;lt;!-- 多说公共JS代码 end --&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;接口部分代码&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&quot;section-2&quot;&gt;接口部分代码&lt;/h4&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;section&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ds-thread&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-thread-key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-url=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/tech/jekyll-github-octopress-duoshuo/&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/section&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;使用CSS去掉部分不想显示的内容&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&quot;css&quot;&gt;使用CSS去掉部分不想显示的内容&lt;/h4&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;text/css&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nc&quot;&gt;.ds-powered-by&lt;/span&gt;

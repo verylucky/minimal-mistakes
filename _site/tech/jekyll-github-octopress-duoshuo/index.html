@@ -190,9 +190,8 @@ Jekyll（发音/’dʒiːk əl/，”杰克尔”）是一个静态站点生成�
 <p>Jekyll使用ruby开发，第一步必须先安装ruby环境，mac下自带，因此这里pass</p>
 
 <h4 id="jekyll-1">部署Jekyll</h4>
-<p>搭建Jekyll环境非常简单，可以参考<a href="http://jekyllrb.com/docs/quickstart/">http://jekyllrb.com/docs/quickstart/</a> 但是对于一个后台程序员而言，做界面美化实在是太纠结了，因此果断找开源模板fork之，minimal mistakes是一个相当优秀的模板，链接如下<a href="https://github.com/mmistakes/minimal-mistakes">https://github.com/mmistakes/minimal-mistakes</a>，然后在基础上进行自定义；</p>
-
-<p>minimal mistakes主题运行在特定的bundle环境下，安装最新的ruby、jekyll可能会出现兼容性问题，如果出现问题，运行</p>
+<p>搭建Jekyll环境非常简单，可以参考<a href="http://jekyllrb.com/docs/quickstart/">http://jekyllrb.com/docs/quickstart/</a> 但是对于一个后台程序员而言，做界面美化实在是太纠结了，因此果断找开源模板fork之，minimal mistakes是一个相当优秀的模板，链接如下<a href="https://github.com/mmistakes/minimal-mistakes">https://github.com/mmistakes/minimal-mistakes</a>，然后在基础上进行自定义；
+minimal mistakes主题运行在特定的bundle环境下，安装最新的ruby、jekyll可能会出现兼容性问题，如果出现问题，运行</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve
 <span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll build
@@ -240,7 +239,7 @@ bundle exec octopress new page xxx
 <p>模板自带disqus评论组件，只需要在_config.yml文件中将  disqus-shortname:设置为注册名，然后在post模板中加上comments = true 即可。但是disqus不符合本土化环境，不能集成qq、wx、weibo这几大社交平台，因此选择本土化的多说评论系统。（Ps. 只要打开稍微看看，就知道基本就是照着disqus抄袭过来的，用起来没有一丁点区别）
 在_include文件夹下，有个_scripts.html文件，这里包含了google的分析工具和评论插件的公共部分代码，我们需要把多说官网提供的功能部分代码包含进来。</p>
 
-<p><strong><em>新建_duoshuo_comments.html</em></strong></p>
+<h4 id="duoshuocommentshtml">新建_duoshuo_comments.html</h4>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c">&lt;!--</span> <span class="err">多说公共</span><span class="nx">JS</span><span class="err">代码</span> <span class="nx">start</span> <span class="p">(</span><span class="err">一个网页只需插入一次</span><span class="p">)</span> <span class="o">--&gt;</span>
 <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
@@ -256,7 +255,7 @@ bundle exec octopress new page xxx
 	<span class="o">&lt;</span><span class="err">/script&gt;</span>
 <span class="c">&lt;!--</span> <span class="err">多说公共</span><span class="nx">JS</span><span class="err">代码</span> <span class="nx">end</span> <span class="o">--&gt;</span></code></pre></div>
 
-<p><strong><em>将下面代码加在_scripts.html底部</em></strong></p>
+<h4 id="scriptshtml">将下面代码加在_scripts.html底部</h4>
 
 <div class="highlight"><pre><code class="language-text" data-lang="text">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;
@@ -272,11 +271,11 @@ var duoshuoQuery = {short_name:&quot;verylucky&quot;};
 	&lt;/script&gt;
 &lt;!-- 多说公共JS代码 end --&gt;</code></pre></div>
 
-<p><strong><em>接口部分代码</em></strong></p>
+<h4 id="section-2">接口部分代码</h4>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">&quot;ds-thread&quot;</span> <span class="na">data-thread-key=</span><span class="s">&quot;&quot;</span> <span class="na">data-title=</span><span class="s">&quot;&quot;</span> <span class="na">data-url=</span><span class="s">&quot;/tech/jekyll-github-octopress-duoshuo/&quot;</span><span class="nt">&gt;&lt;/section&gt;</span></code></pre></div>
 
-<p><strong><em>使用CSS去掉部分不想显示的内容</em></strong></p>
+<h4 id="css">使用CSS去掉部分不想显示的内容</h4>
 
 <div class="highlight"><pre><code class="language-css" data-lang="css"><span class="o">&lt;</span><span class="nt">style</span> <span class="nt">type</span><span class="o">=</span><span class="s2">&quot;text/css&quot;</span><span class="o">&gt;</span>
     <span class="nc">.ds-powered-by</span>
