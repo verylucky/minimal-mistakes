@@ -1,0 +1,19 @@
+---
+layout: post
+title: GFW真是太恶心了
+modified:
+categories: life
+excerpt: 网站可以墙，学习不能停，博客不能断，加油~
+tags: [life]
+image:
+feature:
+comments: true
+share: false
+date: 2015-12-08T23:13:30+08:00
+---
+难得最近没啥开发任务，补补Linux开发基础，看看书总结下知识，好不容易总结完想发出去完事睡觉，写好的git的push脚本却返回了
+```
+ssh: Could not resolve hostname github.com: nodename nor servname provided, or not known
+```
+第一反应是被墙了上不去，果断shadowsocks搞起，尼玛还是传不上去，这该死的GFW最近又搞了啥事啊，真是想不通，一个技术网站都能墙，IT技术赶不上潮流也是活该，真是郁闷！
+洗洗睡，明天去公司传，网站可以墙，学习不能停，博客不能断，加油~

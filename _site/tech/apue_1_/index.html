@@ -1,0 +1,410 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>APUE学习-1.基础知识 &#8211; 凌骏的技术博客</title>
+<meta name="description" content="包括简单的读目录，execve系列函数，系统IO函数，进程相关，出错处理函数的使用，初步总结下最基本的系统函数用法">
+<meta name="keywords" content="APUE">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="APUE学习-1.基础知识">
+<meta name="twitter:description" content="包括简单的读目录，execve系列函数，系统IO函数，进程相关，出错处理函数的使用，初步总结下最基本的系统函数用法">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://verylucky.github.io/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APUE学习-1.基础知识">
+<meta property="og:description" content="包括简单的读目录，execve系列函数，系统IO函数，进程相关，出错处理函数的使用，初步总结下最基本的系统函数用法">
+<meta property="og:url" content="http://verylucky.github.io/tech/apue_1_/">
+<meta property="og:site_name" content="凌骏的技术博客">
+
+<meta property="og:image" content="http://verylucky.github.io/images/default-thumb.png">
+
+
+
+
+
+
+<link rel="canonical" href="http://verylucky.github.io/tech/apue_1_/">
+<link href="http://verylucky.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="凌骏的技术博客 Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://verylucky.github.io/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+<meta property="wb:webmaster" content="77ffdce901626b5c" />
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://verylucky.github.io/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://verylucky.github.io/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://verylucky.github.io/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://verylucky.github.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://verylucky.github.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://verylucky.github.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://verylucky.github.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://verylucky.github.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://verylucky.github.io/images/apple-touch-icon-144x144-precomposed.png">
+
+<style type="text/css">
+
+    .ds-powered-by
+    {
+        display:none;
+    }
+    .ds-meta
+    {
+        display:none;
+    }
+    .ds-comments-info
+    {
+        display:none;
+    }
+    .ds-paginator
+    {
+        display:none;
+    }
+    </style>
+</head>
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://verylucky.github.io/">凌骏的技术博客</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				        
+				    
+				    <li><a href="http://verylucky.github.io/tech-article/" >技术积累</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://verylucky.github.io/life-article/" >心情随笔</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://verylucky.github.io/about/" >关于我</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://verylucky.github.io/tags/" >Tags</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://verylucky.github.io/archive/" >文章归档</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://verylucky.github.io/images/photo.jpg" class="bio-photo" alt="凌骏 bio photo">
+
+
+  <h3 itemprop="name">凌骏</h3>
+  <p>Learning, Communicating, Growing up.</p>
+  <a href="mailto:526093880@qq.com" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://github.com/verylucky" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://www.weibo.com/veryluckyjun" class="author-social" target="_blank"><i class="fa fa-fw fa-weibo"></i> Weibo</a>
+  
+  
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://verylucky.github.io/tech/apue_1_/" rel="bookmark" title="APUE学习-1.基础知识">APUE学习-1.基础知识</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <h3 id="section">读目录</h3>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include&lt;dirent.h&gt;</span>
+
+<span class="kt">DIR</span> <span class="o">*</span><span class="n">dp</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">dirent</span> <span class="o">*</span><span class="n">dirp</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">((</span><span class="n">dp</span> <span class="o">=</span> <span class="n">opendir</span><span class="p">(</span><span class="n">path</span><span class="p">))</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Opendir ERROR!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">while</span> <span class="p">((</span><span class="n">dirp</span> <span class="o">=</span> <span class="n">readdir</span><span class="p">(</span><span class="n">dp</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">dirp</span><span class="o">-&gt;</span><span class="n">d_name</span><span class="p">);</span>
+
+<span class="n">closedir</span><span class="p">(</span><span class="n">dp</span><span class="p">);</span>
+<span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span></code></pre></div>
+
+<h3 id="io">系统IO调用</h3>
+<p>直接通过系统调用复制标准输入到标准输出，没有任何缓冲，效率比较低</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
+<span class="cp">#include &lt;unistd.h&gt;</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+<span class="k">while</span><span class="p">((</span><span class="n">n</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">STDIN_FILENO</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">1024</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">write</span><span class="p">(</span><span class="n">STDOUT_FILENO</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">SYSERROR</span><span class="p">(</span><span class="s">&quot;Write ERROR!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">SYSERROR</span><span class="p">(</span><span class="s">&quot;Read ERROR!&quot;</span><span class="p">);</span>
+
+<span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span></code></pre></div>
+
+<p>通过C标准库函数，进行IO操作, 每次读写一个字符，不用缓冲器</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
+
+<span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+<span class="k">while</span><span class="p">((</span><span class="n">c</span> <span class="o">=</span> <span class="n">getc</span><span class="p">(</span><span class="n">stdin</span><span class="p">))</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">putc</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">stdout</span><span class="p">)</span> <span class="o">==</span> <span class="n">EOF</span><span class="p">)</span>
+        <span class="n">SYSERROR</span><span class="p">(</span><span class="s">&quot;OUTPUT ERROR!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">ferror</span><span class="p">(</span><span class="n">stdin</span><span class="p">))</span>
+    <span class="n">SYSERROR</span><span class="p">(</span><span class="s">&quot;INPUT ERROR!&quot;</span><span class="p">);</span>
+
+<span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span></code></pre></div>
+
+<p>通过C标准库函数，进行IO操作, 每次读一行命令，并且使用系统调用execve执行</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
+<span class="cp">#include &lt;unistd.h&gt;</span>
+<span class="cp">#include &lt;string.h&gt;</span>
+
+<span class="cp">#define MAXSIZE 1024</span>
+<span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="n">MAXSIZE</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">status</span><span class="p">;</span>
+
+<span class="k">while</span><span class="p">((</span><span class="n">fgets</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">MAXSIZE</span><span class="p">,</span> <span class="n">stdin</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">buf</span><span class="p">[</span><span class="n">strlen</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;\n&#39;</span><span class="p">)</span>
+        <span class="n">buf</span><span class="p">[</span><span class="n">strlen</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="n">execlp</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&quot;-la&quot;</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span></code></pre></div>
+
+<p>fgets会自动在字符数组最后加上一个’\0’,如果字符数组长度不够，则截断前面部分，没有’\0’
+如果行尾有换行符，换行符也被赋值进入数组，在’\0’的前面。
+而execlp函数接收的参数不能以换行符结束，因此需要转换。</p>
+
+<h3 id="execve">execve系统调用相关的函数族</h3>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;unistd.h&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">arg</span><span class="p">,</span><span class="kt">char</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//char *name=&quot;/usr/bin/ls&quot;;</span>
+
+    <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;ls&quot;</span><span class="p">,</span><span class="s">&quot;-l&quot;</span><span class="p">,</span><span class="s">&quot;/cway-linux/source&quot;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">};</span><span class="c1">//传递给执行文件的参数数组，这里包含执行文件的参数 </span>
+
+    <span class="kt">char</span> <span class="o">*</span><span class="n">envp</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="nb">NULL</span><span class="p">};</span><span class="c1">//传递给执行文件新的环境变量数组</span>
+
+    <span class="n">execve</span><span class="p">(</span><span class="s">&quot;/bin/ls&quot;</span><span class="p">,</span><span class="n">argv</span><span class="p">,</span><span class="n">envp</span><span class="p">);</span>
+ 
+<span class="p">}</span></code></pre></div>
+
+<p>基本的系统调用用法如上，c标准库进行了一系列封装，主要函数总结如下：</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">int</span>   <span class="n">execl</span><span class="p">(</span>  <span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">arg0</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">arg1</span><span class="p">,...,</span><span class="kt">char</span> <span class="o">*</span><span class="n">argn</span><span class="p">,</span><span class="nb">NULL</span><span class="p">)</span>
+<span class="kt">int</span>   <span class="n">execle</span><span class="p">(</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">arg0</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">arg1</span><span class="p">,...,</span><span class="kt">char</span> <span class="o">*</span><span class="n">argn</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">envp</span><span class="p">[])</span>
+<span class="kt">int</span>   <span class="n">execlp</span><span class="p">(</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">arg0</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">arg1</span><span class="p">,...,</span><span class="nb">NULL</span><span class="p">)</span>
+<span class="kt">int</span>   <span class="n">execlpe</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">arg0</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">arg1</span><span class="p">,...,</span><span class="nb">NULL</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">envp</span><span class="p">[])</span>
+<span class="kt">int</span>   <span class="n">execv</span><span class="p">(</span>  <span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="kt">int</span>   <span class="n">execve</span><span class="p">(</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[],</span><span class="kt">char</span> <span class="o">*</span><span class="n">envp</span><span class="p">[])</span>
+<span class="kt">int</span>   <span class="n">execvp</span><span class="p">(</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="kt">int</span>   <span class="n">execvpe</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[],</span><span class="kt">char</span> <span class="o">*</span><span class="n">envp</span><span class="p">[])</span></code></pre></div>
+
+<p>规律：
+在exec函数族中,后缀l、v、p、e添加到exec后，表示给系统调用封装了额外的功能，
+l：带有参数列表，但是要求最后一个参数必须是NULL；
+p：不要求第一个参数pathname必须是严格路径，会根据系统路径进行搜索；
+e：可以将新环境变量封装传给该函数；
+v：希望收到一个NULL结尾的字符串指针；</p>
+
+<p>个人觉得execlp比较好用：
+<code>execlp("ls", "-la", NULL);</code> 
+返回-1表示执行失败</p>
+
+<h3 id="errnoperrorstrerror">errno相关函数：perror和strerror</h3>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;errno.h&gt;</span>
+
+<span class="n">perror</span><span class="p">(</span><span class="s">&quot;Error Msg&quot;</span><span class="p">);</span> <span class="c1">//根据errno输出对应的错误信息，前面加上Error Msg：</span>
+<span class="n">strerror</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">);</span> <span class="c1">//将num根据errno.h中的定义转为对应的字符串并返回</span></code></pre></div>
+
+<h3 id="signal">信号处理signal函数</h3>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">sig_int</span><span class="p">(</span><span class="kt">int</span> <span class="n">signal</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">INFO</span><span class="p">(</span><span class="s">&quot;msg&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="p">{</span> 
+		<span class="k">if</span><span class="p">(</span><span class="n">signal</span><span class="p">(</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">sig_int</span><span class="p">)</span> <span class="o">==</span> <span class="n">SIG_ERR</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">INFO</span><span class="p">(</span><span class="s">&quot;SIG_ERR Catched!&quot;</span><span class="p">);</span>
+			<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+      <hr />
+      <footer role="contentinfo">
+        
+        <p class="byline"><strong>APUE学习-1.基础知识</strong> was published on <time datetime="2015-12-08T20:22:41+08:00">December 08, 2015</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+
+  
+  
+    <section class="ds-thread" data-thread-key="" data-title="" data-url="/tech/apue_1_/"></section>
+  
+
+  </article>
+
+
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  
+  <div class="related-articles">
+  <h4>You might also enjoy <small class="pull-right">(<a href="http://verylucky.github.io/posts/">View all posts</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://verylucky.github.io/life/gfw/" title="GFW真是太恶心了">GFW真是太恶心了</a></li>
+    
+      <li><a href="http://verylucky.github.io/tech/jekyll-github-octopress-duoshuo/" title="Jekyll+Github+Octopress+Duoshuo搭建个人博客">Jekyll+Github+Octopress+Duoshuo搭建个人博客</a></li>
+    
+      <li><a href="http://verylucky.github.io/tech/MarkDown/" title="Markdown语法">Markdown语法</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  
+  <footer>
+    
+
+<span>&copy; 2015 凌骏. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://verylucky.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://verylucky.github.io/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl =
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'true']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"verylucky"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+</body>
+</html>

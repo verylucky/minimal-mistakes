@@ -1,0 +1,185 @@
+---
+layout: post
+title: APUE学习-1.基础知识
+modified:
+categories: tech
+excerpt: 包括简单的读目录，execve系列函数，系统IO函数，进程相关，出错处理函数的使用，初步总结下最基本的系统函数用法
+tags: ['APUE']
+image:
+feature:
+comments: true
+share: false
+date: 2015-12-08T20:22:41+08:00
+---
+
+
+
+### 读目录
+
+{% highlight c %}
+#include<dirent.h>
+
+DIR *dp;
+struct dirent *dirp;
+
+if ((dp = opendir(path)) == NULL)
+{
+    printf("Opendir ERROR!");
+}
+
+while ((dirp = readdir(dp)) != NULL)
+    printf("%s\n", dirp->d_name);
+
+closedir(dp);
+exit(0);
+
+{% endhighlight %}
+
+###系统IO调用
+直接通过系统调用复制标准输入到标准输出，没有任何缓冲，效率比较低
+{% highlight c %}
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int n;
+char buf[1024];
+while((n = read(STDIN_FILENO, buf, 1024)) > 0)
+{
+    if (write(STDOUT_FILENO, buf, n) != n)
+        SYSERROR("Write ERROR!");
+}
+
+if (n < 0)
+    SYSERROR("Read ERROR!");
+
+exit(0);
+
+{% endhighlight %}
+
+
+通过C标准库函数，进行IO操作, 每次读写一个字符，不用缓冲器
+{% highlight c %}
+#include <stdio.h>
+#include <stdlib.h>
+
+int c;
+while((c = getc(stdin)) != EOF)
+{
+    if (putc(c, stdout) == EOF)
+        SYSERROR("OUTPUT ERROR!");
+}
+
+if (ferror(stdin))
+    SYSERROR("INPUT ERROR!");
+
+exit(0);
+
+{% endhighlight %}
+
+
+
+通过C标准库函数，进行IO操作, 每次读一行命令，并且使用系统调用execve执行
+{% highlight c %}
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+
+#define MAXSIZE 1024
+char buf[MAXSIZE];
+int status;
+
+while((fgets(buf, MAXSIZE, stdin)) != NULL)
+{
+    if (buf[strlen(buf) - 1] == '\n')
+        buf[strlen(buf) - 1] = 0;
+    
+    execlp(buf, "-la", NULL);
+}
+exit(0);
+
+{% endhighlight %}
+
+fgets会自动在字符数组最后加上一个'\0',如果字符数组长度不够，则截断前面部分，没有'\0'
+如果行尾有换行符，换行符也被赋值进入数组，在'\0'的前面。
+而execlp函数接收的参数不能以换行符结束，因此需要转换。
+
+###execve系统调用相关的函数族
+{% highlight c %}
+#include <stdio.h>
+#include <unistd.h>
+
+int main(int arg,char **args)
+{
+    //char *name="/usr/bin/ls";
+
+    char *argv[]={"ls","-l","/cway-linux/source",NULL};//传递给执行文件的参数数组，这里包含执行文件的参数 
+
+    char *envp[]={0,NULL};//传递给执行文件新的环境变量数组
+
+    execve("/bin/ls",argv,envp);
+ 
+}
+{% endhighlight %}
+
+基本的系统调用用法如上，c标准库进行了一系列封装，主要函数总结如下：
+{% highlight c %}
+int   execl(  char *pathname,char *arg0,char *arg1,...,char *argn,NULL)
+int   execle( char *pathname,char *arg0,char *arg1,...,char *argn,NULL,char *envp[])
+int   execlp( char *pathname,char *arg0,char *arg1,...,NULL)
+int   execlpe(char *pathname,char *arg0,char *arg1,...,NULL,char *envp[])
+int   execv(  char *pathname,char *argv[])
+int   execve( char *pathname,char *argv[],char *envp[])
+int   execvp( char *pathname,char *argv[])
+int   execvpe(char *pathname,char *argv[],char *envp[])
+{% endhighlight %}
+
+规律：
+在exec函数族中,后缀l、v、p、e添加到exec后，表示给系统调用封装了额外的功能，
+l：带有参数列表，但是要求最后一个参数必须是NULL；
+p：不要求第一个参数pathname必须是严格路径，会根据系统路径进行搜索；
+e：可以将新环境变量封装传给该函数；
+v：希望收到一个NULL结尾的字符串指针；
+
+个人觉得execlp比较好用：
+```execlp("ls", "-la", NULL);``` 
+返回-1表示执行失败
+
+###errno相关函数：perror和strerror
+{% highlight c %}
+#include <errno.h>
+
+perror("Error Msg"); //根据errno输出对应的错误信息，前面加上Error Msg：
+strerror(int num); //将num根据errno.h中的定义转为对应的字符串并返回
+
+{% endhighlight %}
+
+
+###信号处理signal函数
+{% highlight c %}
+
+void sig_int(int signal)
+{
+	INFO("msg");
+}
+
+int main()
+{
+	while(1)
+	{ 
+		if(signal(SIGINT, sig_int) == SIG_ERR)
+		{
+			INFO("SIG_ERR Catched!");
+			return -1;
+		}
+	}
+	return 0;
+}
+
+{% endhighlight %}
+
+
+
+
+
