@@ -14,5 +14,5 @@ date: 2015-12-09T13:35:18+08:00
 
 
 
-<http://127.0.0.1:4000/assets/pdf/CMake_Practice.pdf>
+<{{site.url}}/assets/pdf/CMake_Practice.pdf>
 
