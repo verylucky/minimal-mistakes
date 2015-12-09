@@ -1,0 +1,18 @@
+---
+layout: post
+title: CMake实战
+modified:
+categories: tech
+excerpt: 基本CMake的原理和操作
+tags: ['Linux']
+image:
+feature:
+comments: true
+share: false
+date: 2015-12-09T13:35:18+08:00
+---
+
+
+
+<http://127.0.0.1:4000/assets/pdf/CMake_Practice.pdf>
+
