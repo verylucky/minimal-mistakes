@@ -7,6 +7,7 @@
 {% include _head.html %}
 </head>
 
+
 <body class="post-index">
 
 {% include _browser-upgrade.html %}
@@ -44,7 +45,7 @@
             {% if post.link %}
               <h4 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></a></h4>
             {% else %}
-              <span><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}" style="color:blue">{{ post.title }}</a></span>
+              <span id="titletag"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}" style="color:#1473AB" >{{ post.title }}</a></span>
               {% if post.excerpt %}
                 <!--p>{{ post.excerpt | strip_html | truncate: 160 }}</p-->
               {% endif %}

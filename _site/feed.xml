@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-<title type="text">浅草</title>
+<title type="text">浅草才能没马蹄</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://verylucky.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="http://verylucky.github.io" />
-<updated>2016-01-13T19:31:09+08:00</updated>
+<updated>2016-01-13T23:03:03+08:00</updated>
 <id>http://verylucky.github.io/</id>
 <author>
   <name>凌骏</name>
@@ -29,7 +29,7 @@
   <content type="html">
     &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/assets/pdf/libpcapHakin9LuisMartinGarcia.pdf&quot;&gt;http://verylucky.github.io/assets/pdf/libpcapHakin9LuisMartinGarcia.pdf&lt;/a&gt;&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/tech/libpcap/&quot;&gt;Libpcap Programming&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;浅草&lt;/a&gt; on January 13, 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/tech/libpcap/&quot;&gt;Libpcap Programming&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;浅草才能没马蹄&lt;/a&gt; on January 13, 2016.&lt;/p&gt;
   </content>
 </entry>
 
@@ -51,7 +51,7 @@
     &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/assets/pdf/CMake_Practice.pdf&quot;&gt;http://verylucky.github.io/assets/pdf/CMake_Practice.pdf&lt;/a&gt;&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/tech/cmake/&quot;&gt;CMake实战&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;浅草&lt;/a&gt; on December 09, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/tech/cmake/&quot;&gt;CMake实战&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;浅草才能没马蹄&lt;/a&gt; on December 09, 2015.&lt;/p&gt;
   </content>
 </entry>
 
@@ -77,7 +77,7 @@ ssh: Could not resolve hostname github.com: nodename nor servname provided, or n
 第一反应是被墙了上不去，果断shadowsocks搞起，尼玛还是传不上去，这该死的GFW最近又搞了啥事啊，真是想不通，一个技术网站都能墙，IT技术赶不上潮流也是活该，真是郁闷！
 洗洗睡，明天去公司传，网站可以墙，学习不能停，博客不能断，加油~&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/life/gfw/&quot;&gt;GFW真是太恶心了&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;浅草&lt;/a&gt; on December 08, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/life/gfw/&quot;&gt;GFW真是太恶心了&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;浅草才能没马蹄&lt;/a&gt; on December 08, 2015.&lt;/p&gt;
   </content>
 </entry>
 
@@ -242,7 +242,7 @@ v：希望收到一个NULL结尾的字符串指针；&lt;/p&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/tech/apue_1_/&quot;&gt;APUE学习-1.基础知识&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;浅草&lt;/a&gt; on December 08, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/tech/apue_1_/&quot;&gt;APUE学习-1.基础知识&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;浅草才能没马蹄&lt;/a&gt; on December 08, 2015.&lt;/p&gt;
   </content>
 </entry>
 
@@ -371,7 +371,7 @@ bundle exec octopress new page xxx
 &lt;a href=&quot;https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/&quot;&gt;https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/&lt;/a&gt;&lt;br /&gt;
 至此，等域名解析生效，即可访问你的个人博客了。&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/tech/jekyll-github-octopress-duoshuo/&quot;&gt;Jekyll+Github+Octopress+Duoshuo搭建个人博客&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;浅草&lt;/a&gt; on December 02, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/tech/jekyll-github-octopress-duoshuo/&quot;&gt;Jekyll+Github+Octopress+Duoshuo搭建个人博客&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;浅草才能没马蹄&lt;/a&gt; on December 02, 2015.&lt;/p&gt;
   </content>
 </entry>
 
@@ -689,7 +689,7 @@ a start and end fence lines to delimit the code block.
   &lt;/ol&gt;
 &lt;/div&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/tech/MarkDown/&quot;&gt;Markdown语法&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;浅草&lt;/a&gt; on December 02, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://verylucky.github.io/tech/MarkDown/&quot;&gt;Markdown语法&lt;/a&gt; was originally published by 凌骏 at &lt;a href=&quot;http://verylucky.github.io&quot;&gt;浅草才能没马蹄&lt;/a&gt; on December 02, 2015.&lt;/p&gt;
   </content>
 </entry>
 
