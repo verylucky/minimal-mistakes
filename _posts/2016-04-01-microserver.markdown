@@ -27,6 +27,7 @@ Epoll通过mmap将用户的一块地址空间和内核的一块地址空间映�
 LT，水平触发模式，简单理解就是只要fd中有可读数据，系统就会不断重复通知，直到全部读完为止；
 ET，边缘触发模式，每次fd有变动的时候，便会收到一个内核通知，但是读完一次之后，即使没读完，系统也不会再进行通知，ET是一种更高效的并发模式；
 附上链接，这两篇博客详细说明了Epoll和LT&ET模式
+
 <http://www.cnblogs.com/lojunren/p/3856290.html>
 <http://blog.chinaunix.net/uid/28541347/sid-193117-list-1.html>
 

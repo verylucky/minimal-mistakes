@@ -214,8 +214,9 @@ body
 <h3 id="epoll-ltet">Epoll的两种工作模式 LT&amp;ET</h3>
 <p>LT，水平触发模式，简单理解就是只要fd中有可读数据，系统就会不断重复通知，直到全部读完为止；
 ET，边缘触发模式，每次fd有变动的时候，便会收到一个内核通知，但是读完一次之后，即使没读完，系统也不会再进行通知，ET是一种更高效的并发模式；
-附上链接，这两篇博客详细说明了Epoll和LT&amp;ET模式
-<a href="http://www.cnblogs.com/lojunren/p/3856290.html">http://www.cnblogs.com/lojunren/p/3856290.html</a>
+附上链接，这两篇博客详细说明了Epoll和LT&amp;ET模式</p>
+
+<p><a href="http://www.cnblogs.com/lojunren/p/3856290.html">http://www.cnblogs.com/lojunren/p/3856290.html</a>
 <a href="http://blog.chinaunix.net/uid/28541347/sid-193117-list-1.html">http://blog.chinaunix.net/uid/28541347/sid-193117-list-1.html</a></p>
 
 <h3 id="epoll-2">Epoll编程接口</h3>
