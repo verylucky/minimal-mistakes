@@ -1,0 +1,473 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Epoll+Coro的微型服务器框架 &#8211; 浅草才能没马蹄</title>
+<meta name="description" content="Epoll进行收发数据包功能，Coro将异步代码同步化，提高编程效率；">
+<meta name="keywords" content="Linux">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Epoll+Coro的微型服务器框架">
+<meta name="twitter:description" content="Epoll进行收发数据包功能，Coro将异步代码同步化，提高编程效率；">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://verylucky.github.io/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Epoll+Coro的微型服务器框架">
+<meta property="og:description" content="Epoll进行收发数据包功能，Coro将异步代码同步化，提高编程效率；">
+<meta property="og:url" content="http://verylucky.github.io/tech/microserver/">
+<meta property="og:site_name" content="浅草才能没马蹄">
+
+<meta property="og:image" content="http://verylucky.github.io/images/default-thumb.png">
+
+
+
+
+
+
+<link rel="canonical" href="http://verylucky.github.io/tech/microserver/">
+<link href="http://verylucky.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="浅草才能没马蹄 Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://verylucky.github.io/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+<meta property="wb:webmaster" content="77ffdce901626b5c" />
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://verylucky.github.io/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://verylucky.github.io/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://verylucky.github.io/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://verylucky.github.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://verylucky.github.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://verylucky.github.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://verylucky.github.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://verylucky.github.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://verylucky.github.io/images/apple-touch-icon-144x144-precomposed.png">
+
+
+<style>
+body
+{
+  font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", "微软雅黑", sans-serif;
+}
+</style>
+
+<style type="text/css">
+
+    .ds-powered-by
+    {
+        display:none;
+    }
+    .ds-meta
+    {
+        display:none;
+    }
+    .ds-comments-info
+    {
+        display:none;
+    }
+    .ds-paginator
+    {
+        display:none;
+    }
+    </style>
+</head>
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://verylucky.github.io/">浅草才能没马蹄</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				        
+				    
+				    <li><a href="http://verylucky.github.io/tech-article/" >技术积累</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://verylucky.github.io/life-article/" >心情随笔</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://verylucky.github.io/about/" >关于我</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://verylucky.github.io/tags/" >Tags</a></li>
+				
+				    
+				        
+				    
+				    <li><a href="http://verylucky.github.io/archive/" >文章归档</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://verylucky.github.io/images/photo.jpg" class="bio-photo" alt="凌骏 bio photo">
+
+
+  <h3 itemprop="name">凌骏</h3>
+  <p>Learning, Communicating, Growing up.</p>
+  <a href="mailto:526093880@qq.com" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://github.com/verylucky" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://www.weibo.com/veryluckyjun" class="author-social" target="_blank"><i class="fa fa-fw fa-weibo"></i> Weibo</a>
+  
+  
+</div>
+
+<hr />
+<div>
+    <strong>友情链接</strong><br/><br/>
+    <a class="author-social" href="http://rechardchen.github.io">小虎的博客</a>
+    <a class="author-social" href="http://zlvb.github.io">CPP的博客</a>
+</div>
+<hr/>
+<div>
+    <p style="font:normal bold">如果你觉得他的blog还不错，请他喝一杯吧!</p>
+    <img src="/assets/img/pay.jpg" height="180" width="112" />
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://verylucky.github.io/tech/microserver/" rel="bookmark" title="Epoll+Coro的微型服务器框架">Epoll+Coro的微型服务器框架</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <h3 id="epoll">Epoll框架</h3>
+
+<p>Epoll是Linux下IO多路复用的增强版本，作为select和poll的升级版，Epoll采用回调机制，大幅度提高了并发效率。select和poll均采用对fd进行轮询的方式，遍历所有连接的fd，找到可读的fd进行读写操作，这种方式在套接字大部分均为活跃的情况下效率是比较高的，但是在现网情况下，数十万的连接中可能只有很小部分是可读的，这样当服务器并发数过高的时候，效率会线性下降。而Epoll通过内核监听注册到epoll上的套接字，通过event机制返回所有的可读写的套接字，然后通过回调方式进行处理，避免了大量套接字的时候轮询开销，可以支持大量FD并发读写，尤其在大量不活跃的链接情况下，其效率明显要高于select和poll。</p>
+
+<p>此外，select，poll方式可以监听的fd是有限的，内核定义了__FD_SETSIZE宏用于限制fd句柄的数量，系统一般默认为1024个，而epoll可以只跟内存大小相关，一般1G内存可以支持10w左右的链接。</p>
+
+<h3 id="epoll-1">Epoll实现原理</h3>
+
+<p>Epoll通过mmap将用户的一块地址空间和内核的一块地址空间映射到同一块物理内存，减少用户态和内核态直接的信息传递，同时内核也可以看到用户态所监听的fd，效率高。用户将fd和event的映射注册到内核维护的一棵红黑树上，当检测到fd上有数据流，则将该映射复制到一个双向链表上，然后通过epoll_wait返回所有的注册的event。如果该链表为空，则阻塞在epoll_wait，挂起当前进程。</p>
+
+<h3 id="epoll-ltet">Epoll的两种工作模式 LT&amp;ET</h3>
+<p>LT，水平触发模式，简单理解就是只要fd中有可读数据，系统就会不断重复通知，直到全部读完为止；
+ET，边缘触发模式，每次fd有变动的时候，便会收到一个内核通知，但是读完一次之后，即使没读完，系统也不会再进行通知，ET是一种更高效的并发模式；
+附上链接，这两篇博客详细说明了Epoll和LT&amp;ET模式
+<a href="http://www.cnblogs.com/lojunren/p/3856290.html">http://www.cnblogs.com/lojunren/p/3856290.html</a>
+<a href="http://blog.chinaunix.net/uid/28541347/sid-193117-list-1.html">http://blog.chinaunix.net/uid/28541347/sid-193117-list-1.html</a></p>
+
+<h3 id="epoll-2">Epoll编程接口</h3>
+
+<p>和传统Socket编程一样，绑定ip和端口，并且开启监听，唯一区别在于不在accept阻塞，等listenfd变为可读，而是将listenfd注册到epfd，然后在epoll_wait处hang住，等系统回调；下面列举了两个主要的函数，<code>sock_bind</code>用于绑定ip和端口，注册listenfd；</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">EpollServer</span><span class="o">::</span><span class="n">sock_bind</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ip</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">port</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">local</span><span class="p">;</span>
+    <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">local</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">local</span><span class="p">));</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="p">(</span><span class="n">listenfd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s">&quot;sockfd</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">setnonblocking</span><span class="p">(</span><span class="n">listenfd</span><span class="p">);</span>
+    <span class="n">local</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
+    <span class="n">local</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">inet_addr</span><span class="p">(</span><span class="n">ip</span><span class="p">);</span>
+    <span class="n">local</span><span class="p">.</span><span class="n">sin_port</span><span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="n">port</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">bind</span><span class="p">(</span><span class="n">listenfd</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">local</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">local</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s">&quot;bind</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">listen</span><span class="p">(</span><span class="n">listenfd</span><span class="p">,</span> <span class="n">MAX_CLIENT</span><span class="p">);</span>
+    <span class="n">epollfd</span> <span class="o">=</span> <span class="n">epoll_create</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="n">epollfd</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s">&quot;epoll_create</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">//不需要多个ev，因为都是拷贝到epoll内核的，每次wait到之后再拷贝回来，可以复用一个ev即可</span>
+    <span class="k">struct</span> <span class="n">epoll_event</span> <span class="n">ev</span><span class="p">;</span>
+    <span class="n">ev</span><span class="p">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">EPOLLIN</span> <span class="o">|</span> <span class="n">EPOLLET</span><span class="p">;</span>
+    <span class="n">ev</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span> <span class="o">=</span> <span class="n">listenfd</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epollfd</span><span class="p">,</span> <span class="n">EPOLL_CTL_ADD</span><span class="p">,</span> <span class="n">listenfd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ev</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s">&quot;epoll_ctl</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+<p><code>handle_connection</code>用于在epoll_wait等待链接，如果所有fd均为不可读，没有事件通知，则hang住进程，否则返回所有的可读fd，存于ev数组中，ret是fd的数量，然后对每个根据ev上的fd和注册的事件信息进行回调处理；其中的协程主要用于响应函数的调度，可以避免异步代码以及上下文切换，异步代码同步化，可以提高代码可读性，提高编程效率。</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">EpollServer</span><span class="o">::</span><span class="n">handle_connection</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="n">epoll_event</span> <span class="n">ev</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">epoll_wait</span><span class="p">(</span><span class="n">epollfd</span><span class="p">,</span> <span class="n">ev</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ret</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span> <span class="o">==</span> <span class="n">listenfd</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">events</span> <span class="o">&amp;</span> <span class="n">EPOLLIN</span><span class="p">))</span>
+            <span class="p">{</span>             
+                <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">client_addr</span><span class="p">;</span>
+                <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">client_addr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">client_addr</span><span class="p">));</span>
+                <span class="kt">socklen_t</span> <span class="n">addr_len</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">client_addr</span><span class="p">);</span>
+                <span class="kt">int</span> <span class="n">clientfd</span> <span class="o">=</span> <span class="n">accept</span><span class="p">(</span><span class="n">listenfd</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">client_addr</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">addr_len</span><span class="p">);</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">clientfd</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;accept error!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">else</span> 
+                <span class="p">{</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;accept a new client: %s:%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">inet_ntoa</span><span class="p">(</span><span class="n">client_addr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">),</span><span class="n">client_addr</span><span class="p">.</span><span class="n">sin_port</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span> <span class="o">=</span> <span class="n">clientfd</span><span class="p">;</span>
+                <span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">events</span> <span class="o">=</span> <span class="n">EPOLLIN</span><span class="o">|</span><span class="n">EPOLLET</span><span class="o">|</span><span class="n">EPOLLERR</span><span class="o">|</span><span class="n">EPOLLRDHUP</span><span class="p">;</span>
+                <span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epollfd</span><span class="p">,</span> <span class="n">EPOLL_CTL_ADD</span><span class="p">,</span> <span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+                <span class="c1">//为该链接创建一个session 保存链接信息 创建协程 加入map</span>
+                <span class="c1">//创建协程</span>
+                <span class="n">Coro</span> <span class="o">*</span><span class="n">hcoro</span> <span class="o">=</span><span class="p">(</span><span class="n">Coro</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Coro</span><span class="p">));</span>
+                <span class="n">hcoro</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">(</span><span class="n">clientfd</span><span class="p">,</span> <span class="n">CORO_STACK_SIZE</span><span class="p">);</span>
+                <span class="n">CoroMgr</span><span class="o">::</span><span class="n">getInstance</span><span class="p">().</span><span class="n">add_coro</span><span class="p">(</span><span class="n">clientfd</span><span class="p">,</span> <span class="n">hcoro</span><span class="p">);</span>
+                
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">events</span> <span class="o">&amp;</span> <span class="n">EPOLLIN</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;in EPOLLIN</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+                
+                <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">recv</span><span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;client closed...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+                    <span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epollfd</span><span class="p">,</span> <span class="n">EPOLL_CTL_DEL</span><span class="p">,</span> <span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">else</span>
+                <span class="p">{</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;message recv: %s&quot;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+                    <span class="c1">//send(ev[i].data.fd, buf, sizeof(buf), 0);</span>
+                    <span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">events</span> <span class="o">=</span> <span class="n">EPOLLIN</span> <span class="o">|</span> <span class="n">EPOLLET</span> <span class="p">;</span>
+                    <span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epollfd</span><span class="p">,</span> <span class="n">EPOLL_CTL_MOD</span><span class="p">,</span> <span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+                <span class="p">}</span>
+                
+                <span class="c1">//resume协程，传入函数和数据，进行处理</span>
+                <span class="n">Coro</span> <span class="o">*</span><span class="n">hcoro</span> <span class="o">=</span> <span class="n">CoroMgr</span><span class="o">::</span><span class="n">getInstance</span><span class="p">().</span><span class="n">get_coro</span><span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span><span class="p">);</span>
+                <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">hcoro</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;hcoro null </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="c1">//以后改成解析数据包，根据cmd寻找响应函数</span>
+                <span class="kt">int</span> <span class="n">cmd</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">cmd</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">cmd</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;cmd error</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+                    <span class="k">continue</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="n">hcoro</span><span class="o">-&gt;</span><span class="n">setCmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">);</span>
+                <span class="n">hcoro</span><span class="o">-&gt;</span><span class="n">resume</span><span class="p">();</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;back resume</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+            <span class="p">}</span>   
+            <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">events</span> <span class="o">&amp;</span> <span class="n">EPOLLOUT</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;In EPOLLOUT</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+                <span class="n">send</span><span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+                
+                <span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">events</span> <span class="o">=</span> <span class="n">EPOLLIN</span> <span class="o">|</span> <span class="n">EPOLLET</span> <span class="p">;</span>
+                <span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epollfd</span><span class="p">,</span> <span class="n">EPOLL_CTL_ADD</span><span class="p">,</span> <span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ev</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>    
+    <span class="c1">//初始化协程调度器</span>
+    <span class="n">CoroMgr</span> <span class="o">&amp;</span><span class="n">mgr</span> <span class="o">=</span> <span class="n">CoroMgr</span><span class="o">::</span><span class="n">getInstance</span><span class="p">();</span>
+    <span class="n">mgr</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
+    
+    <span class="n">EpollServer</span> <span class="n">srv</span><span class="p">;</span>
+    <span class="n">srv</span><span class="p">.</span><span class="n">sock_bind</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">);</span>
+    <span class="n">srv</span><span class="p">.</span><span class="n">handle_connection</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+<h3 id="section">协程</h3>
+
+<h4 id="section-1">优点</h4>
+
+<ul>
+  <li>代码编辑简单。可以将异步处理逻辑代码用同步的方式编写，将多个异步操作集中到一个函数中完成，不需要维护过多的session数据或状态机，同时兼备异步的高效。</li>
+  <li>如果一个业务逻辑中涉及到多个异步请求，使用传统的异步回调方式，会使代码变得很凌乱，逻辑被不同的函数分享的支离破碎，非常不便于代码阅读。如果使用协程，可以将一个完整的业务逻辑集中在一个函数中完成，一眼了然。</li>
+  <li>编程简单。单线程模式，没有线程安全的问题，不需要加锁操作。</li>
+  <li>性能好。协程是用户态线程，切换更加高效。</li>
+</ul>
+
+<h4 id="section-2">缺点</h4>
+<ul>
+  <li>在协程执行中不能有阻塞操作，否则整个线程被阻塞</li>
+  <li>有注意全局变量、指针的使用</li>
+</ul>
+
+<h4 id="section-3">使用方式</h4>
+
+<p>携程核心用法就是resume和yield函数，在linux系统中一般使用swapcontext实现，函数原型是<code>int swap_context(ucontext* uctx, ucontext* new_uctx)</code>, 保存当前上下文到uctx，切换到new_uctx代表的上下文环境中。在服务器交互中一般如下图所示。</p>
+
+<p><img src="http://verylucky.github.io/images/coro.png" width="600" alt="coro" /></p>
+
+<p>协程详细说明：<a href="http://gcloud.qq.com/forum/topic/569c4d895c4720d06f31c91b">http://gcloud.qq.com/forum/topic/569c4d895c4720d06f31c91b</a></p>
+
+<p>源码地址链接：<a href="https://github.com/verylucky/microserver">https://github.com/verylucky/microserver</a></p>
+
+      <hr />
+      <footer role="contentinfo">
+        
+        <p class="byline"><strong>Epoll+Coro的微型服务器框架</strong> was published on <time datetime="2016-04-01T12:09:42+08:00">April 01, 2016</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+
+  
+  
+    <section class="ds-thread" data-thread-key="" data-title="" data-url="/tech/microserver/"></section>
+  
+
+  </article>
+
+
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  
+  <div class="related-articles">
+  <h4>You might also enjoy <small class="pull-right">(<a href="http://verylucky.github.io/posts/">View all posts</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://verylucky.github.io/tech/libpcap/" title="Libpcap Programming">Libpcap Programming</a></li>
+    
+      <li><a href="http://verylucky.github.io/tech/cmake/" title="CMake实战">CMake实战</a></li>
+    
+      <li><a href="http://verylucky.github.io/life/gfw/" title="GFW真是太恶心了">GFW真是太恶心了</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  
+  <footer>
+    
+
+<span>&copy; 2016 凌骏. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://verylucky.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://verylucky.github.io/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl =
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'true']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"verylucky"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+</body>
+</html>
